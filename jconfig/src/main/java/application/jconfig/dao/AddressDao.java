@@ -6,5 +6,5 @@ public interface AddressDao {
 	
 	public boolean addAddress(Address address);
 	public boolean deleteAddress(Address address);
-  //  public Address get(int id);
+  
 }
