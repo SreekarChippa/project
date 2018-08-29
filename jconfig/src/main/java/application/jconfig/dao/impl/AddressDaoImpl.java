@@ -40,9 +40,9 @@ public class AddressDaoImpl implements AddressDao{
 	
 	}
 
-	public Address get(int id) {
+	/*public Address get(int id) {
 		// TODO Auto-generated method stub
 		return null;
-	}
+	}*/
 
 }

@@ -123,7 +123,7 @@ public class AppTest
 		assertEquals("Insertion Failed", true, vendorDao.addVendor(vendor));
 	}
 	
-	//@Test
+	@Test
 	public void updateVendor() {
 		vendorDao.addVendor(vendor);
 		vendor.setName("sreekar");

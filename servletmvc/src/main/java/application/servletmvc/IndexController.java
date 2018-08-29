@@ -35,7 +35,7 @@ public class IndexController {
 	public ModelAndView aboutUs(){
 		ModelAndView mav2=new ModelAndView("AboutUs");
 		mav2.addObject("date", new Date());
-		System.out.println("git demo");
+	//	System.out.println("git demo");
 		return mav2;
 	}
 	
