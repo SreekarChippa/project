@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" isELIgnored="false"%>
+    
+    <%@taglib uri="http://www.springframework.org/tags/form" prefix="springform" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -10,7 +12,13 @@
 
 ${vendordetails.name}
 ${vendordetails.email}
-${vendordetails.mobile}
+${vendordetails.mobile} 
+
+<springform:form>
+	
+	
+	
+</springform:form>
 
 </body>
 </html>

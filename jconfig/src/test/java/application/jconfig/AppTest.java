@@ -2,6 +2,9 @@ package application.jconfig;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -79,6 +82,10 @@ public class AppTest
 	@Autowired
 	private SubCategoryDao subCategoryDao;
 	
+	private Address address1;
+	private Address address2;
+	
+	
 	@Before
 	public void setUp() {
 		
@@ -91,17 +98,36 @@ public class AppTest
 		vendor.setConfirmPassword("sreekar");
 		vendor.setCompanyName("amazon.in");
 		
-		address.setHouseNumber("11-6-197");
+/*		address.setHouseNumber("11-6-197");
 		address.setStreet("musherabad");
 		address.setCity("hyderabad");
-		address.setState("telanagana");
+		address.setState("telanagana");*/
+		
+		HashSet<Address> addresses=new HashSet<Address>();
+		
+		address1=new Address();
+		address1.setHouseNumber("11-6-197");
+		address1.setStreet("musherabad");
+		address1.setCity("hyderabad");
+		address1.setState("telanagana");
+		addresses.add(address1);
+		address1.setVendor(vendor);
+		
+		
+		address2=new Address();
+		address2.setHouseNumber("11-6-198");
+		address2.setStreet("musheerabad");
+		address2.setCity("hyd");
+		address2.setState("tg");
+		addresses.add(address2);
+		address2.setVendor(vendor);
+		
+		vendor.setAddresses(addresses);
 	
 		account.setAccountNumber(1483232629);
 		account.setBankName("sbi");
 		
-		product.setBrand("Samsung");
-		product.setModel("note9");
-		product.setWarranty(12);
+	
 		
 		mobile.setBrand("Sony");
 		mobile.setModel("Xperia");
@@ -115,6 +141,7 @@ public class AppTest
 		laptop.setLaptopRom(1000);
 		laptop.setProcessor("Quad Core");
 		laptop.setOs("Windows 10");
+		laptop.setBrand("Dell");
 		
 	}
 		
@@ -131,6 +158,11 @@ public class AppTest
 		vendor.setMobile("7032343530");
 		vendor.setCompanyName("amazon");
 		assertEquals("Test Failed", true, vendorDao.updateVendor(vendor));
+	}
+	
+	public void getVendorByEmail() {
+		vendorDao.addVendor(vendor);
+		assertEquals("Test Failed", vendor, vendorDao.getVendorByEmail(vendor.getEmail()));		
 	}
 
 	
@@ -180,6 +212,7 @@ public class AppTest
 		assertEquals("Test Failed", true, laptopDao.addLaptop(laptop));
 		deleteLaptop();
 	}
+	
 	
 	@After
 	public void deleteVendor() {

@@ -8,5 +8,6 @@ public interface VendorDao {
 	public boolean updateVendor(Vendor vendor);
 	public boolean deleteVendor(Vendor vendor);
 	public Vendor getVendorById(int vid);
+	public Vendor getVendorByEmail(String email);
 	public Vendor login(String email,String password);
 }
