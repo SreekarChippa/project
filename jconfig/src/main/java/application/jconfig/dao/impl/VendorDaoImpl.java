@@ -80,7 +80,7 @@ public class VendorDaoImpl implements VendorDao {
 	public Vendor getVendorByEmail(String email) {
 		// TODO Auto-generated method stub
 		try {
-		Query<Vendor> query=sessionFactory.getCurrentSession().createQuery("from vendor where email=:email", Vendor.class);
+		Query<Vendor> query=sessionFactory.getCurrentSession().createQuery("from Vendor where email=:email", Vendor.class);
 		query.setParameter("email", email);
 		return query.getSingleResult();
 		}catch (Exception e) {

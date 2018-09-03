@@ -5,6 +5,7 @@ import java.util.Date;
 
 import javax.enterprise.inject.New;
 
+import org.omg.CORBA.PUBLIC_MEMBER;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -43,7 +44,6 @@ public class IndexController {
 	public String contactUs(Model model) {
 		model.addAttribute("contact", "7032343530");
 		return "ContactUs";
-
 	}
 	
 	@RequestMapping(value= {"/signup"},method=RequestMethod.GET)
@@ -54,10 +54,12 @@ public class IndexController {
 	
 	@PostMapping("/register")
 	public String register(@ModelAttribute("vendor")Vendor vendor) {
-		if(vendorDao.addVendor(vendor)) {
-			return "redirect:/login";
-		}else {
-			return "signup";
+		if((vendorDao.getVendorByEmail(vendor.getEmail()))!=null) {
+			return "redirect:/signup";
+		}
+		else{
+			vendorDao.addVendor(vendor);
+			return "login";
 		}
 
 	}
@@ -72,14 +74,30 @@ public class IndexController {
 	public String login(@ModelAttribute("login")Login login,Model model) {
 		if(vendorDao.login(login.getEmail(), login.getPassword()) != null) {
 			Vendor vendor= vendorDao.login(login.getEmail(), login.getPassword());
-			model.addAttribute("vendordetails", vendor);
-			return "vendordetails";
-		}else {
-		return "login";
+			model.addAttribute("profile", vendor);
+			return "profile";
+		}
+		else {
+			return "login";
 		}
 				
 	}
 	
+	@GetMapping
+	public String updateProfile("/profile") {
+		
+		return null;
+		
+	}
+	
+	public String update(@ModelAttribute("vendor") Vendor vendor) {
+		if(vendorDao.updateVendor(vendor)) {
+			return "redirect:/homepage"
+		}
+		else {
+			return "update";
+		}
+	}
 	
 
 }
