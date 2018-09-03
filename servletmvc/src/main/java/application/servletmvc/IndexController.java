@@ -4,9 +4,11 @@ import java.lang.ProcessBuilder.Redirect;
 import java.util.Date;
 
 import javax.enterprise.inject.New;
+import javax.servlet.http.HttpSession;
 
 import org.omg.CORBA.PUBLIC_MEMBER;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.client.support.HttpAccessor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -54,12 +56,13 @@ public class IndexController {
 	
 	@PostMapping("/register")
 	public String register(@ModelAttribute("vendor")Vendor vendor) {
-		if((vendorDao.getVendorByEmail(vendor.getEmail()))!=null) {
-			return "redirect:/signup";
+		if((vendorDao.getVendorByEmail(vendor.getEmail()))==null) {
+			vendorDao.addVendor(vendor);
+			return "redirect:/login";
 		}
 		else{
-			vendorDao.addVendor(vendor);
-			return "login";
+			
+			return "signup";
 		}
 
 	}
@@ -71,10 +74,10 @@ public class IndexController {
 	}
 	
 	@PostMapping("/loginprocess")
-	public String login(@ModelAttribute("login")Login login,Model model) {
-		if(vendorDao.login(login.getEmail(), login.getPassword()) != null) {
+	public String login(@ModelAttribute("login")Login login,HttpSession httpSession) {
+		if( vendorDao.login(login.getEmail(), login.getPassword()) != null) {
 			Vendor vendor= vendorDao.login(login.getEmail(), login.getPassword());
-			model.addAttribute("profile", vendor);
+			httpSession.setAttribute("profile", vendor);
 			return "profile";
 		}
 		else {
@@ -83,20 +86,24 @@ public class IndexController {
 				
 	}
 	
-	@GetMapping
-	public String updateProfile("/profile") {
+	@GetMapping("/profile")
+	public String profile() {
 		
-		return null;
-		
+		return "profile";
 	}
 	
-	public String update(@ModelAttribute("vendor") Vendor vendor) {
-		if(vendorDao.updateVendor(vendor)) {
-			return "redirect:/homepage"
-		}
-		else {
-			return "update";
-		}
+	@GetMapping(value= {"edit"})
+	public String updateProfile(HttpSession httpSession,Model model) {
+		model.addAttribute("vendor", httpSession.getAttribute("profile"));
+		return "editprofile";
+	}
+	
+	@PostMapping("updateprofile")
+	public String updateProfile(@ModelAttribute("vendor") Vendor vendor,HttpSession httpSession) {
+		System.out.println(vendor.getVid());
+		httpSession.setAttribute("profile", vendor);
+		vendorDao.updateVendor(vendor);
+		return "redirect:profile";
 	}
 	
 

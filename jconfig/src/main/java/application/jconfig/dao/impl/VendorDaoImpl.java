@@ -36,11 +36,11 @@ public class VendorDaoImpl implements VendorDao {
 		// TODO Auto-generated method stub
 		try {
 		sessionFactory.getCurrentSession().update(vendor);
-		return true;
+			return true;
 		}
 		catch(Exception ex)
 		{
-		return false;
+			return false;
 		}
 		
 	}

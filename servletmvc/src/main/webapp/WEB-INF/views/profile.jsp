@@ -10,13 +10,41 @@
 </head>
 <body>
 
-<springform:form action="update" method="GET" >
 
-${profile.name } <br>
+<table>
+	
+<%-- 	<tr>
+		<td>Id</td>
+		<td><springform:input path="hidden"/> </td>
+	</tr> --%>
+	
+	<tr>
+		<td>UserName</td>
+		<td>${profile.name } </td>
+	</tr>
 
-<button type="button" onclick="" >update</button>
+	<tr>
+		<td>Mobile</td>
+		<td>${profile.mobile } </td>
+	</tr>
+	
+<%-- 	<tr>
+		<td>Password</td>
+		<td><springform:input path="hidden"/> </td>
+	</tr> --%>
+	
+	<tr>
+		<td>CompanyName</td>
+		<td>${profile.companyName } </td>
+	</tr>
+	
+	<tr>
+		<td><a href="edit" type="button">edit</a> </td>
+	</tr>
+	
+</table>
 
-</springform:form>
+
 	
 </body>
 </html>
