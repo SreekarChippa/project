@@ -11,6 +11,8 @@
 </head>
 <body>
 
+<h1>Welcome To SignUp Page!</h1>
+
 <springform:form action="register" method="POST" modelAttribute="vendor">
 
 	<springform:input path="name"/>
