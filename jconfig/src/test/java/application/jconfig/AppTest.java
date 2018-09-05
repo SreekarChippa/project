@@ -23,6 +23,7 @@ import application.jconfig.dao.LaptopDao;
 import application.jconfig.dao.MobileDao;
 import application.jconfig.dao.ProductDao;
 import application.jconfig.dao.SubCategoryDao;
+import application.jconfig.dao.UserDao;
 import application.jconfig.dao.VendorDao;
 import application.jconfig.model.Account;
 import application.jconfig.model.Address;
@@ -30,6 +31,7 @@ import application.jconfig.model.Category;
 import application.jconfig.model.HibernateConfiguration;
 import application.jconfig.model.Product;
 import application.jconfig.model.SubCategory;
+import application.jconfig.model.User;
 import application.jconfig.model.Vendor;
 import application.jconfig.model.product.Laptop;
 import application.jconfig.model.product.Mobile;
@@ -40,11 +42,15 @@ import junit.framework.TestSuite;
 @RunWith(SpringJUnit4ClassRunner.class)
 public class AppTest 
 {
-	@Autowired
+	/*@Autowired
 	private Vendor vendor;
 	@Autowired
-	private VendorDao vendorDao;
+	private VendorDao vendorDao;*/
 	
+	@Autowired
+	private User user;
+	@Autowired
+	private UserDao userDao;
 	
 	@Autowired
 	private Address address;
@@ -84,9 +90,33 @@ public class AppTest
 	
 	private Address address1;
 	private Address address2;
-	
-	
+
 	@Before
+	public void setUp() {
+		
+		AnnotationConfigApplicationContext context=new AnnotationConfigApplicationContext(HibernateConfiguration.class);
+		
+		user.setName("sreekar");
+		user.setEmail("sreekar@gmail.com");
+		user.setMobile("7032343530");
+		user.setPassword("sreekar");
+		user.setConfirmPassword("sreekar");
+		user.setRole("admin");
+		
+	}
+	
+	@Test
+	public void test() {
+		assertEquals("Test Failed", true, userDao.addUser(user));
+	}
+	
+	@After
+	public void delete() {
+		assertEquals("Deleting Failed", true, userDao.deleteUser(user));
+	}
+	
+	
+/*	@Before
 	public void setUp() {
 		
 		AnnotationConfigApplicationContext context= new AnnotationConfigApplicationContext(HibernateConfiguration.class);
@@ -98,10 +128,10 @@ public class AppTest
 		vendor.setConfirmPassword("sreekar");
 		vendor.setCompanyName("amazon.in");
 		
-/*		address.setHouseNumber("11-6-197");
+		address.setHouseNumber("11-6-197");
 		address.setStreet("musherabad");
 		address.setCity("hyderabad");
-		address.setState("telanagana");*/
+		address.setState("telanagana");
 		
 		HashSet<Address> addresses=new HashSet<Address>();
 		
@@ -238,6 +268,6 @@ public class AppTest
 	
 	public void deleteLaptop() {
 		laptopDao.deleteLaptop(laptop);
-	}
+	}*/
 	
 }

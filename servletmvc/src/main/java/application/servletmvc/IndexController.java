@@ -19,16 +19,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.ModelAndViewDefiningException;
 
+import application.jconfig.dao.UserDao;
 import application.jconfig.dao.VendorDao;
 import application.jconfig.model.Login;
+import application.jconfig.model.User;
 import application.jconfig.model.Vendor;
 
 @Controller
 public class IndexController {
 	
 	@Autowired
-	private VendorDao vendorDao;
+	private UserDao userDao;
 	
+	/*	
 	@RequestMapping("/")
 	public ModelAndView indexPage() {
 		ModelAndView mav=new ModelAndView("index");
@@ -48,23 +51,29 @@ public class IndexController {
 		return "ContactUs";
 	}
 	
+	*/
+	
+	@RequestMapping("/")
+	public ModelAndView indexPage() {
+		ModelAndView mav=new ModelAndView("index");
+		return mav;
+	}
+	
 	@RequestMapping(value= {"/signup"},method=RequestMethod.GET)
-	public String signUp(Model model) {
-		model.addAttribute("vendor", new Vendor());
+	public String signup(Model model) {
+		model.addAttribute("user", new User());
 		return "signup";
 	}
 	
 	@PostMapping("/register")
-	public String register(@ModelAttribute("vendor")Vendor vendor) {
-		if((vendorDao.getVendorByEmail(vendor.getEmail()))==null) {
-			vendorDao.addVendor(vendor);
+	public String reister(@ModelAttribute("user")User user) {
+		if(userDao.getUserByEmail(user.getEmail())==null) {
+			userDao.addUser(user);
 			return "redirect:/login";
 		}
-		else{
-			
+		else {
 			return "signup";
 		}
-
 	}
 	
 	@GetMapping("/login")
@@ -75,9 +84,9 @@ public class IndexController {
 	
 	@PostMapping("/loginprocess")
 	public String login(@ModelAttribute("login")Login login,HttpSession httpSession) {
-		if( vendorDao.login(login.getEmail(), login.getPassword()) != null) {
-			Vendor vendor= vendorDao.login(login.getEmail(), login.getPassword());
-			httpSession.setAttribute("profile", vendor);
+		if( userDao.login(login.getEmail(), login.getPassword()) != null) {
+			User user= userDao.login(login.getEmail(), login.getPassword());
+			httpSession.setAttribute("profile", user);
 			return "profile";
 		}
 		else {
@@ -94,17 +103,16 @@ public class IndexController {
 	
 	@GetMapping(value= {"edit"})
 	public String updateProfile(HttpSession httpSession,Model model) {
-		model.addAttribute("vendor", httpSession.getAttribute("profile"));
+		model.addAttribute("user", httpSession.getAttribute("profile"));
 		return "editprofile";
 	}
 	
 	@PostMapping("updateprofile")
-	public String updateProfile(@ModelAttribute("vendor") Vendor vendor,HttpSession httpSession) {
-		System.out.println(vendor.getVid());
-		httpSession.setAttribute("profile", vendor);
-		vendorDao.updateVendor(vendor);
+	public String updateProfile(@ModelAttribute("user") User user,HttpSession httpSession) {
+		System.out.println(user.getUserId());
+		httpSession.setAttribute("profile", user);
+		userDao.updateUser(user);
 		return "redirect:profile";
 	}
-	
 
 }

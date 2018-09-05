@@ -13,7 +13,7 @@
 
 <h1>Welcome To SignUp Page!</h1>
 
-<springform:form action="register" method="POST" modelAttribute="vendor">
+<springform:form action="register" method="POST" modelAttribute="user">
 
 	<springform:input path="name"/>
 	<springform:input path="email"/>
@@ -21,6 +21,7 @@
 	<springform:input path="password"/>
 	<springform:input path="confirmPassword"/>
 	<springform:input path="companyName"/>
+	<springform:input path="role"/>
 	<input type="submit"/>
 
 </springform:form>

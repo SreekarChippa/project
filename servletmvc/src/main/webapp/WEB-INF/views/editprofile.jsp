@@ -10,12 +10,12 @@
 </head>
 <body>
 
-<springform:form action="updateprofile" method="post" modelAttribute="vendor">
+<springform:form action="updateprofile" method="post" modelAttribute="user">
 
 <table>
 	<tr>
 		<td>Id</td>
-		<td><springform:input path="vid" type="hidden"/> </td>
+		<td><springform:input path="userId" type="hidden"/> </td>
 	</tr>
 	
 	<tr>
