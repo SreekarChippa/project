@@ -28,15 +28,25 @@
 		<td><springform:input path="mobile"/> </td>
 	</tr>
 	
-	<%-- <tr>
+	<tr>
+		<td>Email</td>
+		<td><springform:input path="email"/></td>
+	</tr>
+	
+	<tr>
 		<td>Password</td>
-		<td><springform:input path="hidden"/> </td>
-	</tr> --%>
+		<td><springform:input path="password" type="hidden"/> </td>
+	</tr> 
 	
 	 <tr>
 		<td>CompanyName</td>
 		<td><springform:input path="companyName"/> </td>
 	</tr> 
+	
+	<tr> 
+		<td>role</td>
+		<td><springform:input path="role" type="hidden"/></td>
+	</tr>
 	
 	<tr>
 		<td><input type="submit" value="Update"> </td>

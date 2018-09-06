@@ -87,13 +87,24 @@ public class IndexController {
 		if( userDao.login(login.getEmail(), login.getPassword()) != null) {
 			User user= userDao.login(login.getEmail(), login.getPassword());
 			httpSession.setAttribute("profile", user);
-			return "profile";
-		}
+			
+			if(user.getRole().equalsIgnoreCase("admin")) {
+				   return  "adminpage";
+			   }else 
+			   if(user.getRole().equalsIgnoreCase("vendor")) {
+				   return  "vendorpage";
+			   } else
+			  
+				   return  "customerpage";
+		   		}
+				
 		else {
 			return "login";
 		}
-				
+	
 	}
+	
+	
 	
 	@GetMapping("/profile")
 	public String profile() {
@@ -107,12 +118,29 @@ public class IndexController {
 		return "editprofile";
 	}
 	
-	@PostMapping("updateprofile")
+/*	@PostMapping("updateprofile")
 	public String updateProfile(@ModelAttribute("user") User user,HttpSession httpSession) {
 		System.out.println(user.getUserId());
 		httpSession.setAttribute("profile", user);
 		userDao.updateUser(user);
 		return "redirect:profile";
-	}
+	}*/
 
+	@PostMapping("updateprofile")
+	public String updateProfileProcess(@ModelAttribute("user")User user,HttpSession httpSession) {
+		httpSession.setAttribute("profile", user);
+		userDao.updateUser(user);
+		
+		return "redirect:profile";
+/*		if(user.getRole().equalsIgnoreCase("admin")) {
+			return "indexpage";
+		}else if (user.getRole().equalsIgnoreCase("vendor")) {
+			return "vendorindex";
+		}else {
+			return "customerindex";	
+		}*/
+		
+		
+	}
+	
 }

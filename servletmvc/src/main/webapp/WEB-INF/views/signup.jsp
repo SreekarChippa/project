@@ -15,14 +15,19 @@
 
 <springform:form action="register" method="POST" modelAttribute="user">
 
+
 	<springform:input path="name"/>
 	<springform:input path="email"/>
 	<springform:input path="mobile"/>
 	<springform:input path="password"/>
 	<springform:input path="confirmPassword"/>
 	<springform:input path="companyName"/>
-	<springform:input path="role"/>
-	<input type="submit"/>
+	<springform:select path="role">
+		<springform:option value="vendor" label="vendor"/>
+		<springform:option value="customer" label="customer"/>
+	</springform:select>
+	
+	<input type="submit" value="submit"/>
 
 </springform:form>
 

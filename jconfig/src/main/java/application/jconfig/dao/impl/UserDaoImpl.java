@@ -67,7 +67,7 @@ public class UserDaoImpl implements UserDao{
 	public User getUserByEmail(String email) {
 		// TODO Auto-generated method stub
 		try {
-			Query<User> query=sessionFactory.getCurrentSession().createQuery("from User where eamil=:email", User.class);
+			Query<User> query=sessionFactory.getCurrentSession().createQuery("from User where email=:email", User.class);
 			query.setParameter("email", email);
 			return query.getSingleResult();
 		} catch (Exception e) {
@@ -91,8 +91,14 @@ public class UserDaoImpl implements UserDao{
 		
 	}
 
-	
+	public List<User> getVendorDetails() {
+		// TODO Auto-generated method stub
+		try {
+			Query<User> query=sessionFactory.getCurrentSession().createQuery("from User where role='vendor", User.class);
+			return query.getResultList();
+		}
+		return null;
+	}
 
 	
-
 }
