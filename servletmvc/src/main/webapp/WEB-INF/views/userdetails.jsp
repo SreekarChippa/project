@@ -31,9 +31,9 @@
               <th>mobile</th>
               <th>role</th>
               <th>companyName</th>
-              <th>status</th>
+<!--               <th>status</th>
               <th>accept</th>
-              <th>reject</th>
+              <th>reject</th> -->
            </tr>
         
         </thead>
@@ -49,9 +49,9 @@
                       <td><c:out value="${user.mobile}"></c:out></td>
                       <td><c:out value="${user.role}"></c:out></td>
                       <td><c:out value="${user.companyName}"></c:out></td>
-                       <td><c:out value="${user.status }"></c:out></td>   
-                    <td><a href="accept/${user.userId }"><input type="button" value="accept" />  </a></td>
-                    <td> <a href="reject/${user.userId }"><input type="button" value="reject" />  </a></td>
+                     <%--   <td><c:out value="${user.status }"></c:out></td>    --%>
+                    <%-- <td><a href="accept/${user.userId }"><input type="button" value="accept" />  </a></td>
+                    <td> <a href="reject/${user.userId }"><input type="button" value="reject" />  </a></td> --%>
                            
                  </tr>
            </tbody>

@@ -2,6 +2,7 @@ package application.servletmvc;
 
 import java.lang.ProcessBuilder.Redirect;
 import java.util.Date;
+import java.util.Map;
 
 import javax.enterprise.inject.New;
 import javax.servlet.http.HttpSession;
@@ -118,29 +119,22 @@ public class IndexController {
 		return "editprofile";
 	}
 	
-/*	@PostMapping("updateprofile")
-	public String updateProfile(@ModelAttribute("user") User user,HttpSession httpSession) {
-		System.out.println(user.getUserId());
-		httpSession.setAttribute("profile", user);
-		userDao.updateUser(user);
-		return "redirect:profile";
-	}*/
-
 	@PostMapping("updateprofile")
 	public String updateProfileProcess(@ModelAttribute("user")User user,HttpSession httpSession) {
 		httpSession.setAttribute("profile", user);
 		userDao.updateUser(user);
-		
-		return "redirect:profile";
-/*		if(user.getRole().equalsIgnoreCase("admin")) {
-			return "indexpage";
-		}else if (user.getRole().equalsIgnoreCase("vendor")) {
-			return "vendorindex";
-		}else {
-			return "customerindex";	
-		}*/
-		
-		
+		return "redirect:profile";	
+	}
+	
+	@GetMapping("userdetails")
+	public String getUserDetails(Map<String ,Object> user) {
+		user.put("userList", userDao.getVendorDetails());	
+		return "userdetails";
+	}
+	
+	@GetMapping("userprofile")
+	public String getUserDetails() {
+		return "userprofile";
 	}
 	
 }

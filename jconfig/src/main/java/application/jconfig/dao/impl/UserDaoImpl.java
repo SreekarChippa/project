@@ -1,5 +1,7 @@
 package application.jconfig.dao.impl;
 
+import java.util.List;
+
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -94,10 +96,13 @@ public class UserDaoImpl implements UserDao{
 	public List<User> getVendorDetails() {
 		// TODO Auto-generated method stub
 		try {
-			Query<User> query=sessionFactory.getCurrentSession().createQuery("from User where role='vendor", User.class);
+			Query<User> query=sessionFactory.getCurrentSession().createQuery("from User where role='vendor'", User.class);
 			return query.getResultList();
+		}catch (Exception e) {
+			// TODO: handle exception
+			return null;
 		}
-		return null;
+		
 	}
 
 	

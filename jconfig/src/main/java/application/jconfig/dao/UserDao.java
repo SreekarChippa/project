@@ -1,5 +1,7 @@
 package application.jconfig.dao;
 
+import java.util.List;
+
 import application.jconfig.model.User;
 
 public interface UserDao {
@@ -9,7 +11,7 @@ public interface UserDao {
 	public User getUserById(int userId);
 	public User getUserByEmail(String email);
 	public User login(String email,String password);
-	public User getVendorDetails();
+	public List<User> getVendorDetails();
 	
 
 }

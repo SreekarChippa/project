@@ -39,7 +39,7 @@
                   <a class="nav-link text-white" href="edit">Edit Profile</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="vendordetails">Vendor's</a>
+                    <a class="nav-link text-white" href="userdetails">Vendor's</a>
                   </li>
 
                  <!-- Dropdown -->
