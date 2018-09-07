@@ -16,15 +16,15 @@
             <td>${user.name}</td>
 		</tr>
 		<tr>
-			<td>Name:</td>
+			<td>Mobile:</td>
             <td>${user.mobile}</td>
 		</tr>
 		<tr>
-			<td>Name:</td>
+			<td>Email:</td>
             <td>${user.email}</td>
 		</tr>
 		<tr>
-			<td>Name:</td>
+			<td>Role:</td>
             <td>${user.role}</td>
 		</tr>
 	</table>

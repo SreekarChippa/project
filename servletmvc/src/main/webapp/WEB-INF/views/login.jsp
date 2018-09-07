@@ -13,14 +13,23 @@
 <body>
 	<h1>Welcome To Login Page!</h1>
 	
-	<springform:form action="loginprocess" method="POST" modelAttribute="login">
+<springform:form action="loginprocess" method="POST" modelAttribute="login">
 		
-	<springform:input path="email"/>
-	<springform:input path="password"/>
+<table>
+	<tr>
+		<td><springform:label path="email">Email:</springform:label></td>
+		<td><springform:input path="email"/> </td>
+	</tr>	
+	<tr>
+		<td><springform:label path="password">Password:</springform:label> </td>
+		<td><springform:input path="password"/> </td>
+	</tr>
+	<tr>
+		<td><input type="submit" value="login"> </td>
+	</tr>
+</table>
 	
-	<input type="submit">
-	
-	</springform:form>
+</springform:form>
 	
 </body>
 </html>

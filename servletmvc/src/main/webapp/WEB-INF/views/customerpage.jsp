@@ -48,9 +48,10 @@
           <a class="dropdown-item" href="#">Televisions</a>
         </div>
       </li>
-              </ul>
-            </div>
-          </nav>  
+
+	</ul>
+  </div>
+</nav>  
        
     
            

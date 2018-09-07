@@ -26,6 +26,16 @@ public class User {
 	private String confirmPassword;
 	private String role;
 	private String companyName;
+	
+	private boolean status=false;
+	
+	
+	public boolean isStatus() {
+		return status;
+	}
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
 	public int getUserId() {
 		return userId;
 	}

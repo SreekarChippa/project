@@ -18,10 +18,80 @@
 
 </head>
 <body>
+
+<h1>Deactive Stage</h1>
       
-  
+<table class="table">
+
+	<thead>
+		<tr>
+			<th>userid</th>
+              <th>name</th>
+              <th>email</th>
+              <th>mobile</th>
+              <th>role</th>
+              <th>companyName</th>
+              <th>status</th>
+              <th>process</th>
+		</tr>
+	</thead>
+	
+	<tbody>
+		<c:forEach  items="${userList }"  var="user">
+			<c:if test="${user.status==false }">
+				<tr>
+					<td><c:out value="${user.userId }"></c:out></td>
+                      <td><c:out value="${user.name}"></c:out></td>
+                      <td><c:out value="${user.email}"></c:out></td>
+                      <td><c:out value="${user.mobile}"></c:out></td>
+                      <td><c:out value="${user.role}"></c:out></td>
+                      <td><c:out value="${user.companyName}"></c:out></td>
+                      <td><c:out value="${user.status }"></c:out></td>
+                      <td><a href="accept/${user.userId }"><input type="button" value="Activate"></a></td>
+				</tr>
+			</c:if>
+		</c:forEach>
+	</tbody>
+
+</table>  
+
+
+<h1>Active Stage</h1>
+
+<table>
+	<thead>
+		<tr>
+			<th>userid</th>
+              <th>name</th>
+              <th>email</th>
+              <th>mobile</th>
+              <th>role</th>
+              <th>companyName</th>
+              <th>status</th>
+              <th>process</th>
+		</tr>
+	</thead>
+	
+	<tbody>
+		<c:forEach  items="${userList }"  var="user">
+			<c:if test="${user.status==true }">
+				<tr>
+					<td><c:out value="${user.userId }"></c:out></td>
+                      <td><c:out value="${user.name}"></c:out></td>
+                      <td><c:out value="${user.email}"></c:out></td>
+                      <td><c:out value="${user.mobile}"></c:out></td>
+                      <td><c:out value="${user.role}"></c:out></td>
+                      <td><c:out value="${user.companyName}"></c:out></td>
+                      <td><c:out value="${user.status }"></c:out></td>
+                      <td><a href="reject/${user.userId }"><input type="button" value="Deactivate"></a></td>
+				</tr>
+			</c:if>
+		</c:forEach>
+	</tbody>
+
+</table>  
      
-     <c:if test="${!empty userList }">
+     <%-- <c:if test="${!empty userList }">
         <table  class="table table-bordered table-sm">
         <thead>
             <tr>
@@ -31,9 +101,9 @@
               <th>mobile</th>
               <th>role</th>
               <th>companyName</th>
-<!--               <th>status</th>
-              <th>accept</th>
-              <th>reject</th> -->
+              <th>status</th>
+              <th>process</th>
+              <!-- <th>reject</th>  -->
            </tr>
         
         </thead>
@@ -49,9 +119,21 @@
                       <td><c:out value="${user.mobile}"></c:out></td>
                       <td><c:out value="${user.role}"></c:out></td>
                       <td><c:out value="${user.companyName}"></c:out></td>
-                     <%--   <td><c:out value="${user.status }"></c:out></td>    --%>
-                    <%-- <td><a href="accept/${user.userId }"><input type="button" value="accept" />  </a></td>
-                    <td> <a href="reject/${user.userId }"><input type="button" value="reject" />  </a></td> --%>
+                      <td><c:out value="${user.status }"></c:out></td>   
+                    
+                    <c:set var = "status" scope = "session" value = "${user.status}"/>
+                       <c:choose>
+                       <c:when test="${ status == false}">
+                       <td><a href="accept/${user.userId }"><input type="button" value="Activate"></a></td>
+                       </c:when>
+                       <c:when test="${ status == true}">
+                       <td><a href="reject/${user.userId}"><input type="button" value="Deactivate"></a></td>
+                       </c:when>
+                       </c:choose>
+                       
+                       
+                      <td><a href="accept/${user.userId }"><input type="button" value="accept" />  </a></td>
+                      <td> <a href="reject/${user.userId }"><input type="button" value="reject" />  </a></td> 
                            
                  </tr>
            </tbody>
@@ -61,7 +143,7 @@
         
         </table>
         
-        </c:if>
+        </c:if> --%>
       
      
 </body>

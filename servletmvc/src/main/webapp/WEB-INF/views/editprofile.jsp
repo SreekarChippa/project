@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<h1>Edit Profile</h1>
 <springform:form action="updateprofile" method="post" modelAttribute="user">
 
 <table>
@@ -19,32 +19,32 @@
 	</tr>
 	
 	<tr>
-		<td>name</td>
+		<td>Name:</td>
 		<td><springform:input path="name"/> </td>
 	</tr>
 
 	<tr>
-		<td>Mobile</td>
+		<td>Mobile:</td>
 		<td><springform:input path="mobile"/> </td>
 	</tr>
 	
 	<tr>
-		<td>Email</td>
+		<td>Email:</td>
 		<td><springform:input path="email"/></td>
 	</tr>
 	
 	<tr>
-		<td>Password</td>
+		<td>Password:</td>
 		<td><springform:input path="password" type="hidden"/> </td>
 	</tr> 
 	
 	 <tr>
-		<td>CompanyName</td>
+		<td>Company Name:</td>
 		<td><springform:input path="companyName"/> </td>
 	</tr> 
 	
 	<tr> 
-		<td>role</td>
+		<td>Role:</td>
 		<td><springform:input path="role" type="hidden"/></td>
 	</tr>
 	

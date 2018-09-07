@@ -9,7 +9,7 @@
 <title>Profile</title>
 </head>
 <body>
-
+<h1>User Profile</h1>
 
 <table>
 	
@@ -19,27 +19,27 @@
 	</tr> --%>
 	
 	<tr>
-		<td>UserName</td>
+		<td>UserName:</td>
 		<td>${profile.name } </td>
 	</tr>
 
 	<tr>
-		<td>Mobile</td>
+		<td>Email::</td>
+		<td>${profile.email } </td>
+	</tr>
+
+	<tr>
+		<td>Mobile:</td>
 		<td>${profile.mobile } </td>
 	</tr>
 	
-<%-- 	<tr>
-		<td>Password</td>
-		<td><springform:input path="hidden"/> </td>
-	</tr> --%>
-	
 	<tr>
-		<td>CompanyName</td>
+		<td>CompanyName:</td>
 		<td>${profile.companyName } </td>
 	</tr>
 	
 	<tr>
-		<td><a href="edit" type="button">edit</a> </td>
+		<td><a href="edit" type="button">Edit</a> </td>
 	</tr>
 	
 </table>

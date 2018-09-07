@@ -15,20 +15,46 @@
 
 <springform:form action="register" method="POST" modelAttribute="user">
 
+<table>
+	<tr>
+      <td><springform:label path="name">Name:</springform:label></td>
+      <td><springform:input path="name"/></td>
+    </tr>
+    <tr>
+      <td><springform:label path="email">Email:</springform:label></td>
+      <td><springform:input path="email"/></td>
+    </tr>
+    <tr>
+      <td><springform:label path="mobile">Mobile:</springform:label></td>
+      <td><springform:input path="mobile"/></td>
+    </tr>
+    <tr>
+      <td><springform:label path="password">Password:</springform:label></td>
+      <td><springform:input path="password"/></td>
+    </tr>
+    <tr>
+      <td><springform:label path="confirmPassword">Confirm Password:</springform:label></td>
+      <td><springform:input path="confirmPassword"/></td>
+    </tr>
+    <tr>
+    	<td><springform:label path="companyName">Company Name:</springform:label></td>
+    	<td><springform:input path="companyName"/></td>
+    </tr>
 
-	<springform:input path="name"/>
-	<springform:input path="email"/>
-	<springform:input path="mobile"/>
-	<springform:input path="password"/>
-	<springform:input path="confirmPassword"/>
-	<springform:input path="companyName"/>
-	<springform:select path="role">
-		<springform:option value="vendor" label="vendor"/>
-		<springform:option value="customer" label="customer"/>
-	</springform:select>
+	<tr>
+		<td>
+			<springform:select path="role">
+				<springform:option value="vendor" label="vendor"/>
+				<springform:option value="customer" label="customer"/>
+			</springform:select>
+		</td>
+	</tr>
 	
-	<input type="submit" value="submit"/>
-
+	<tr>
+	<td><input type="submit" value="sign up"/></td>
+	</tr>
+	
+</table>
 </springform:form>
 
 </body>
