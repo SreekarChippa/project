@@ -1,6 +1,5 @@
 package application.jconfig.model;
 
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -11,7 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
-import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -20,12 +18,12 @@ import org.springframework.stereotype.Component;
 
 @Entity
 @Component
-public class Vendor {
+public class Customer {
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int vendorId;
+	private int customerId;
 	
-	@Column(unique=true)
 	private String name;
 	
 	@NotNull(message="email should not be null")
@@ -39,10 +37,6 @@ public class Vendor {
 	@Column(unique=true,nullable=false)
 	private String mobile;
 	
-	@NotNull(message="CompanyName should not be null")
-	@NotBlank(message="CompanyName should not be blank")
-	private String companyName;
-	
 	@NotNull(message="password should not be null")
 	@NotBlank(message="password should not be blank")
 	private String password;
@@ -50,14 +44,15 @@ public class Vendor {
 	@Transient
 	private String confirmPassword;
 	
-	private boolean status;
+	@OneToMany(mappedBy="user",cascade=CascadeType.ALL)
+	private Set<CustomerAddress> customerAddress;
 
-	public int getVendorId() {
-		return vendorId;
+	public int getCustomerId() {
+		return customerId;
 	}
 
-	public void setVendorId(int vendorId) {
-		this.vendorId = vendorId;
+	public void setCustomerId(int customerId) {
+		this.customerId = customerId;
 	}
 
 	public String getName() {
@@ -84,14 +79,6 @@ public class Vendor {
 		this.mobile = mobile;
 	}
 
-	public String getCompanyName() {
-		return companyName;
-	}
-
-	public void setCompanyName(String companyName) {
-		this.companyName = companyName;
-	}
-
 	public String getPassword() {
 		return password;
 	}
@@ -108,23 +95,12 @@ public class Vendor {
 		this.confirmPassword = confirmPassword;
 	}
 
-	public boolean isStatus() {
-		return status;
-	}
-
-	public void setStatus(boolean status) {
-		this.status = status;
-	}
-
 	@Override
 	public String toString() {
-		return "Vendor [vendorId=" + vendorId + ", name=" + name + ", email=" + email + ", mobile=" + mobile
-				+ ", companyName=" + companyName + ", password=" + password + ", confirmPassword=" + confirmPassword
-				+ ", status=" + status + "]";
+		return "Customer [customerId=" + customerId + ", name=" + name + ", email=" + email + ", mobile=" + mobile
+				+ ", password=" + password + ", confirmPassword=" + confirmPassword + "]";
 	}
 	
 	
 	
-	
-
 }

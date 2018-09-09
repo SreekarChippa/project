@@ -43,6 +43,7 @@
 				</div>
 				
 				<div class="form-group">
+				<!-- 	<input type="password" id="inputPassword" class="form-control" > -->
 					<label for="password">Password:</label>
       				<springform:input path="password" class="form-control" id="password"/>
 				</div>
@@ -88,18 +89,18 @@
 </body>
 </html>
 
-<style>
+<style> 
 .bg{
-	background-image:url("https://udemy-images.udemy.com/course/750x422/1070976_fcd4_2.jpg");
+	background-image:url("https://ak5.picdn.net/shutterstock/videos/15366295/thumb/4.jpg");
 	width: 100%;
 	height: 100%;
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
-}
+} 
 form{
-	padding-left:600px;
-	padding-bottom: 60px;
+	padding-left:500px;
+	padding-bottom: 110px;
 
 }
 </style>
