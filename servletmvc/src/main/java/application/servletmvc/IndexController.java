@@ -6,12 +6,14 @@ import java.util.Map;
 
 import javax.enterprise.inject.New;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.omg.CORBA.PUBLIC_MEMBER;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.client.support.HttpAccessor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -68,20 +70,28 @@ public class IndexController {
 	}
 	
 	@PostMapping("/register")
-	public String reister(@ModelAttribute("user")User user) {
-		if(userDao.getUserByEmail(user.getEmail())==null) {
-			userDao.addUser(user);
-			return "redirect:/login";
-		}
-		else {
+	public String reister(@Valid @ModelAttribute("user")User user,BindingResult result,Model model) {
+		System.out.println(result.hasErrors());
+		if(!result.hasErrors())
+		{
+			if(userDao.getUserByEmail(user.getEmail())==null) {
+				userDao.addUser(user);
+				return "redirect:/login";
+			}
+			else {
+				model.addAttribute("message", "email is already existed");
+				return "signup";
+			}
+		}else {
 			return "signup";
 		}
+		
 	}
 	
 	@GetMapping("/login")
 	public String loginPage(Model model){
 		model.addAttribute("login", new Login());
-		return "login";
+		return "/login";
 	}
 	
 	@PostMapping("/loginprocess")

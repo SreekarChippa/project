@@ -8,54 +8,99 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Registration</title>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  
 </head>
 <body>
 
-<h1>Welcome To SignUp Page!</h1>
-
-<springform:form action="register" method="POST" modelAttribute="user">
-
-<table>
-	<tr>
-      <td><springform:label path="name">Name:</springform:label></td>
-      <td><springform:input path="name"/></td>
-    </tr>
-    <tr>
-      <td><springform:label path="email">Email:</springform:label></td>
-      <td><springform:input path="email"/></td>
-    </tr>
-    <tr>
-      <td><springform:label path="mobile">Mobile:</springform:label></td>
-      <td><springform:input path="mobile"/></td>
-    </tr>
-    <tr>
-      <td><springform:label path="password">Password:</springform:label></td>
-      <td><springform:input path="password"/></td>
-    </tr>
-    <tr>
-      <td><springform:label path="confirmPassword">Confirm Password:</springform:label></td>
-      <td><springform:input path="confirmPassword"/></td>
-    </tr>
-    <tr>
-    	<td><springform:label path="companyName">Company Name:</springform:label></td>
-    	<td><springform:input path="companyName"/></td>
-    </tr>
-
-	<tr>
-		<td>
-			<springform:select path="role">
-				<springform:option value="vendor" label="vendor"/>
-				<springform:option value="customer" label="customer"/>
-			</springform:select>
-		</td>
-	</tr>
+<div class="bg">
+	<div class="container-fluid bg">
+		<div class="row">
+			<springform:form action="register" method="POST" modelAttribute="user">
+				
+				<div class="form-group">
+					<label for="name">Name:</label>
+      				<springform:input path="name" class="form-control" id="name"/>
+      				<springform:errors path="name" ></springform:errors>
+				</div>
+				
+				<div class="form-group">
+					<label for="email">Email:</label>
+      				<springform:input path="email" class="form-control" id="email"/>
+      				<springform:errors path="email" ></springform:errors>
+				</div>		
+				
+				<div class="form-group">
+					<label for="mobile">Mobile:</label>
+      				<springform:input path="mobile" class="form-control" id="mobile"/>
+      				<springform:errors path="mobile" ></springform:errors>
+				</div>
+				
+				<div class="form-group">
+					<label for="password">Password:</label>
+      				<springform:input path="password" class="form-control" id="password"/>
+				</div>
+				
+				<div class="form-group">
+					<label for="confirmPassword">Confirm Password:</label>
+      				<springform:input path="confirmPassword" class="form-control" id="confirmPassword"/>
+				</div>
+				
+				<div class="form-group">
+					<label for="companyName">Company Name:</label>
+      				<springform:input path="companyName" class="form-control" id="companyName"/>
+      				<springform:errors path="companyName" ></springform:errors>
+				</div>
+				
+				<td><springform:label path="role">Role:</springform:label></td>
+				
+				<td>
+					<ul>
+						<springform:select path="role">
+							<springform:option value="vendor">Vendor</springform:option>
+							<springform:option value="customer">Customer</springform:option>
+						</springform:select>
+					</ul>
+				</td>
+				
+				<div class="form-group form-check">
+					<label class="form-check-label">
+						<input class="form-check-input" type="checkbox">Remember Me</label>
+				</div>
+				
+				<button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+				
+				</springform:form>
+				
+		</div>
 	
-	<tr>
-	<td><input type="submit" value="sign up"/></td>
-	</tr>
-	
-</table>
-</springform:form>
+	</div>
+
+</div>
+
 
 </body>
 </html>
+
+<style>
+.bg{
+	background-image:url("https://udemy-images.udemy.com/course/750x422/1070976_fcd4_2.jpg");
+	width: 100%;
+	height: 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+form{
+	padding-left:600px;
+	padding-bottom: 60px;
+
+}
+</style>
+

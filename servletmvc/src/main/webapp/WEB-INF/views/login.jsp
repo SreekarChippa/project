@@ -17,11 +17,11 @@
 		
 <table>
 	<tr>
-		<td><springform:label path="email">Email:</springform:label></td>
+		<td><springform:label path="email">Email:</springform:label></td> 
 		<td><springform:input path="email"/> </td>
 	</tr>	
 	<tr>
-		<td><springform:label path="password">Password:</springform:label> </td>
+		<td><springform:label path="password">Password:</springform:label> </td> 
 		<td><springform:input path="password"/> </td>
 	</tr>
 	<tr>
