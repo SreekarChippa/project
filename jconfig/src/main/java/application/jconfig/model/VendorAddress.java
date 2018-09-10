@@ -14,7 +14,7 @@ public class VendorAddress {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int vendorId;
+	private int vendorAddressId;
 	
 	private String houseNumber;
 	private String street;
@@ -25,10 +25,10 @@ public class VendorAddress {
 	private Vendor vendor;
 	
 	public int getVendorId() {
-		return vendorId;
+		return vendorAddressId;
 	}
 	public void setVendorId(int vendorId) {
-		this.vendorId = vendorId;
+		this.vendorAddressId = vendorId;
 	}
 	public String getHouseNumber() {
 		return houseNumber;
@@ -56,7 +56,7 @@ public class VendorAddress {
 	}
 	@Override
 	public String toString() {
-		return "VendorAddress [vendorId=" + vendorId + ", houseNumber=" + houseNumber + ", street=" + street + ", city="
+		return "VendorAddress [vendorId=" + vendorAddressId + ", houseNumber=" + houseNumber + ", street=" + street + ", city="
 				+ city + ", state=" + state + "]";
 	}
 	

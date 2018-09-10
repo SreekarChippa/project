@@ -51,6 +51,28 @@ public class Vendor {
 	private String confirmPassword;
 	
 	private boolean status;
+	
+	@OneToMany(mappedBy = "vendor", cascade = CascadeType.ALL)
+	private Set<VendorAddress> vendorAddress;
+
+	@OneToMany(mappedBy = "vendor")
+	private List<Product> product;
+
+	public Set<VendorAddress> getVendorAddress() {
+		return vendorAddress;
+	}
+
+	public void setVendorAddress(Set<VendorAddress> vendorAddress) {
+		this.vendorAddress = vendorAddress;
+	}
+
+	public List<Product> getProduct() {
+		return product;
+	}
+
+	public void setProduct(List<Product> product) {
+		this.product = product;
+	}
 
 	public int getVendorId() {
 		return vendorId;
