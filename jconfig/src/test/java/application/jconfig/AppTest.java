@@ -19,6 +19,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import application.jconfig.dao.AccountDao;
 import application.jconfig.dao.AddressDao;
 import application.jconfig.dao.CategoryDao;
+import application.jconfig.dao.CustomerDao;
 import application.jconfig.dao.LaptopDao;
 import application.jconfig.dao.MobileDao;
 import application.jconfig.dao.ProductDao;
@@ -28,6 +29,7 @@ import application.jconfig.dao.VendorDao;
 import application.jconfig.model.Account;
 import application.jconfig.model.Address;
 import application.jconfig.model.Category;
+import application.jconfig.model.Customer;
 import application.jconfig.model.HibernateConfiguration;
 import application.jconfig.model.Product;
 import application.jconfig.model.SubCategory;
@@ -42,10 +44,15 @@ import junit.framework.TestSuite;
 @RunWith(SpringJUnit4ClassRunner.class)
 public class AppTest 
 {
-	/*@Autowired
+	@Autowired
 	private Vendor vendor;
 	@Autowired
-	private VendorDao vendorDao;*/
+	private VendorDao vendorDao;
+	
+	@Autowired
+	private Customer customer;
+	@Autowired
+	private CustomerDao customerDao;
 	
 	@Autowired
 	private User user;

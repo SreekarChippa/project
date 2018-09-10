@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.Map;
 
 import javax.enterprise.inject.New;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -32,8 +33,11 @@ import application.jconfig.model.Vendor;
 @Controller
 public class IndexController {
 	
+	/*@Autowired
+	private UserDao userDao;*/
+	
 	@Autowired
-	private UserDao userDao;
+	private VendorDao vendorDao;
 	
 	/*	
 	@RequestMapping("/")
@@ -63,7 +67,53 @@ public class IndexController {
 		return mav;
 	}
 	
-	@RequestMapping(value= {"/signup"},method=RequestMethod.GET)
+	@GetMapping(value= {"vendorsignup"})
+	public String signupVendor(Model model)
+	{
+		model.addAttribute("vendor", new Vendor());
+		
+		return "vendorsignup";
+	}
+	
+	@PostMapping("vendorregisterprocess")
+	public String singupVendorProcess(@ModelAttribute("vendor")Vendor vendor) {
+	
+		if((vendorDao.getVendorByEmail(vendor.getEmail()))!=null) {
+		
+			 return "vendorsignup";
+		}
+		else {
+			vendorDao.registerVendor(vendor);
+			return "index";
+		}
+	}
+	
+	@GetMapping("vendorlogin")
+	public String login()
+	{
+		return "vendorlogin";
+	}
+	
+	@PostMapping("vendorloginprocess")
+	public  String  loginVendor(HttpServletRequest request,HttpSession session)
+	{
+		
+	   if((vendorDao.login(request.getParameter("email"),request.getParameter("password")))!=null) {
+		   
+		   Vendor vendor=vendorDao.login(request.getParameter("email"),request.getParameter("password"));
+		   
+		   session.setAttribute("vendorDetails",vendor);
+		   
+		    return "redirect:vendorindex";
+		 
+	   }
+	   else {
+		   
+		   return "vendorsignin";
+	   }
+	}
+	
+	/*@RequestMapping(value= {"/signup"},method=RequestMethod.GET)
 	public String signup(Model model) {
 		model.addAttribute("user", new User());
 		return "signup";
@@ -166,6 +216,6 @@ public class IndexController {
 		userDao.updateUser(user);
 		return "redirect:/userdetails";
 		
-	}
+	}*/
 	
 }

@@ -89,5 +89,15 @@ public class VendorDaoImpl implements VendorDao {
 		}
 		
 	}
+
+	public boolean registerVendor(Vendor vendor) {
+		// TODO Auto-generated method stub
+		try {
+			sessionFactory.getCurrentSession().save(vendor);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
 	
 }

@@ -10,4 +10,5 @@ public interface VendorDao {
 	public Vendor getVendorById(int vid);
 	public Vendor getVendorByEmail(String email);
 	public Vendor login(String email,String password);
+	public boolean registerVendor(Vendor vendor);
 }
