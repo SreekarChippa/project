@@ -37,6 +37,18 @@ public class LaptopDaoImpl implements LaptopDao {
 				return false;
 			}
 	}
+
+	public boolean updateLaptop(Laptop laptop) {
+		// TODO Auto-generated method stub
+		try {
+			sessionFactory.getCurrentSession().update(laptop);
+			return true;
+		} catch (Exception e) {
+			// TODO: handle exception
+			return false;
+		}
+		
+	}
 	
 
 }

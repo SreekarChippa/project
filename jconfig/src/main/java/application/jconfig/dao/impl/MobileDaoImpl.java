@@ -37,4 +37,16 @@ public class MobileDaoImpl implements MobileDao{
 		}
 	}
 
+	public boolean updateMobile(Mobile mobile) {
+		// TODO Auto-generated method stub
+		try {
+			sessionFactory.getCurrentSession().update(mobile);
+			return true;
+		} catch (Exception e) {
+			// TODO: handle exception
+			return false;
+		}
+		
+	}
+
 }
