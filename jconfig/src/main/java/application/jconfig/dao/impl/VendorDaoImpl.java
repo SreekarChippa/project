@@ -58,10 +58,10 @@ public class VendorDaoImpl implements VendorDao {
 		
 	}
 
-	public Vendor getVendorById(int vid) {
+	public Vendor getVendorById(int vendorId) {
 		// TODO Auto-generated method stub
 		try {
-	 	return sessionFactory.getCurrentSession().get(Vendor.class, vid);
+	 	return sessionFactory.getCurrentSession().get(Vendor.class, vendorId);
 		}catch (HibernateException e) {
 			// TODO: handle exception
 			return null;

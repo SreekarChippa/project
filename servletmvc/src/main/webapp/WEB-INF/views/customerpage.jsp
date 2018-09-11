@@ -43,9 +43,11 @@
           Categories
         </a>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="#">Laptops</a>
-          <a class="dropdown-item" href="#">Mobiles</a>
-          <a class="dropdown-item" href="#">Televisions</a>
+          <a class="dropdown-item" href="#">Electronics</a>
+          <a class="dropdown-item" href="#">Men</a>
+          <a class="dropdown-item" href="#">Women</a>
+          <a class="dropdown-item" href="#">Kids</a>
+          <a class="dropdown-item" href="#">Tv's & appliances</a>
         </div>
       </li>
 

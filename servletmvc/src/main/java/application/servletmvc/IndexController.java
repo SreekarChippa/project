@@ -24,8 +24,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.ModelAndViewDefiningException;
 
+import application.jconfig.dao.CategoryDao;
+import application.jconfig.dao.CustomerDao;
 import application.jconfig.dao.UserDao;
 import application.jconfig.dao.VendorDao;
+import application.jconfig.model.Customer;
 import application.jconfig.model.Login;
 import application.jconfig.model.User;
 import application.jconfig.model.Vendor;
@@ -33,11 +36,14 @@ import application.jconfig.model.Vendor;
 @Controller
 public class IndexController {
 	
-	/*@Autowired
-	private UserDao userDao;*/
-	
 	@Autowired
 	private VendorDao vendorDao;
+	
+	@Autowired
+	private CustomerDao customerDao;
+
+	@Autowired
+	private CategoryDao categoryDao;
 	
 	/*	
 	@RequestMapping("/")
@@ -104,13 +110,64 @@ public class IndexController {
 		   
 		   session.setAttribute("vendorDetails",vendor);
 		   
-		    return "redirect:vendorindex";
+		    return "vendorpage";
+	   }
+	   else {	   
+		   return "vendorlogin";
+	   }
+	}
+	
+	
+	@GetMapping(value= {"customersignup"})
+	public String signupCustomer(Model model)
+	{
+		model.addAttribute("customer", new Customer());
+		
+		return "customersignup";
+	}
+	
+	@PostMapping("customerregisterprocess")
+	public String singupCustomerProcess(@ModelAttribute("customer")Customer customer) {
+	
+		if((customerDao.getCustomerByEmail(customer.getEmail()))!=null) {
+		
+			 return "customersignup";
+		}
+		else {
+			customerDao.registerCustomer(customer);
+			return "index";
+		}
+	}
+	
+	@GetMapping("customerlogin")
+	public String loginCustomer()
+	{
+		return "customerlogin";
+	}
+	
+	@PostMapping("customerloginprocess")
+	public  String  logincustomer(HttpServletRequest request,HttpSession session)
+	{
+		
+	   if((customerDao.loginCustomer(request.getParameter("email"),request.getParameter("password")))!=null) {
+		   
+		   Customer customer=customerDao.loginCustomer(request.getParameter("email"),request.getParameter("password"));
+		   
+		   session.setAttribute("customerDetails",customer);
+		   
+		    return "customerpage";
 		 
 	   }
 	   else {
 		   
-		   return "vendorsignin";
+		   return "customerlogin";
 	   }
+	}
+	
+	@GetMapping("categories")
+	public String getCategories(Map<String, Object> categories) {
+		categories.put("categoryList", categoryDao.getCategories());
+		return "categories";
 	}
 	
 	/*@RequestMapping(value= {"/signup"},method=RequestMethod.GET)

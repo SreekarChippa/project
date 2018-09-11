@@ -22,7 +22,7 @@
 <div class="bg">
 	<div class="container-fluid bg">
 		<div class="row">
-			<springform:form action="vendorregisterprocess" method="POST" modelAttribute="vendor">
+			<springform:form action="customerregisterprocess" method="POST" modelAttribute="customer">
 				
 				<div class="form-group">
 					<label for="name">Name:</label>
@@ -51,12 +51,6 @@
 				<div class="form-group">
 					<label for="confirmPassword">Confirm Password:</label>
       				<springform:input path="confirmPassword" class="form-control" id="confirmPassword"/>
-				</div>
-				
-				<div class="form-group">
-					<label for="companyName">Company Name:</label>
-      				<springform:input path="companyName" class="form-control" id="companyName"/>
-      				<springform:errors path="companyName" ></springform:errors>
 				</div>
 				
 				<div class="form-group form-check">

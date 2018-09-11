@@ -10,4 +10,5 @@ public interface CustomerDao {
 	public boolean updateCustomer(Customer customer);
 	public Customer getCustomerById(int customerId);
 	public Customer getCustomerByEmail(String email);
+	public boolean registerCustomer(Customer customer);
 }

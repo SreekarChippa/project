@@ -1,6 +1,7 @@
 package application.jconfig.dao.impl;
 
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -47,18 +48,48 @@ public class CustomerDaoImpl implements CustomerDao {
 	
 	public Customer getCustomerById(int customerId) {
 		// TODO Auto-generated method stub
-		return null;
+		try {
+		return sessionFactory.getCurrentSession().get(Customer.class, customerId);
+		}catch (Exception e) {
+			// TODO: handle exception
+			return null;
+		}
+		
 	}
 
 	public Customer getCustomerByEmail(String email) {
 		// TODO Auto-generated method stub
-		return null;
+		try {
+		Query<Customer> query=sessionFactory.getCurrentSession().createQuery("from Customer where email=:email", Customer.class);
+		query.setParameter("email", email);
+		return query.getSingleResult();
+		}catch (Exception e) {
+			// TODO: handle exception
+			return null;
+		}
+		
 	}
 	
 
 	public Customer loginCustomer(String email, String password) {
 		// TODO Auto-generated method stub
-		return null;
+		Query<Customer> query=sessionFactory.getCurrentSession().createQuery("from Customer where email=:email and password=:password", Customer.class);
+		query.setParameter("email", email);
+		query.setParameter("password", password);
+		return query.getSingleResult();
+	}
+
+	public boolean registerCustomer(Customer customer) {
+		// TODO Auto-generated method stub
+		try {
+			sessionFactory.getCurrentSession().save(customer);
+			return true;
+		} catch (Exception e) {
+			// TODO: handle exception
+			return false;
+		}
+		
+		
 	}
 
 
