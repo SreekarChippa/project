@@ -103,23 +103,30 @@ public class AppTest
 		
 		AnnotationConfigApplicationContext context=new AnnotationConfigApplicationContext(HibernateConfiguration.class);
 		
-		user.setName("sreekar");
+		/*user.setName("sreekar");
 		user.setEmail("sreekar@gmail.com");
 		user.setMobile("7032343530");
 		user.setPassword("sreekar");
 		user.setConfirmPassword("sreekar");
-		user.setRole("admin");
+		user.setRole("admin");*/
+		
+		vendor.setName("sreekar");
+		vendor.setEmail("sreekar@gmail.com");
+		vendor.setMobile("7032343530");
+		vendor.setCompanyName("amazon");
+		vendor.setPassword("sreekar");
+		vendor.setConfirmPassword("sreekar");
 		
 	}
 	
 	@Test
 	public void test() {
-		assertEquals("Test Failed", true, userDao.addUser(user));
+		assertEquals("Test Failed", true, vendorDao.addVendor(vendor));
 	}
 	
 	@After
 	public void delete() {
-		assertEquals("Deleting Failed", true, userDao.deleteUser(user));
+		assertEquals("Deleting Failed", true, vendorDao.deleteVendor(vendor));
 	}
 	
 	

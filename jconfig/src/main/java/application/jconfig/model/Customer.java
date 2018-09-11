@@ -44,7 +44,7 @@ public class Customer {
 	@Transient
 	private String confirmPassword;
 	
-	@OneToMany(mappedBy="user",cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="customer",cascade=CascadeType.ALL)
 	private Set<CustomerAddress> customerAddress;
 
 	public int getCustomerId() {

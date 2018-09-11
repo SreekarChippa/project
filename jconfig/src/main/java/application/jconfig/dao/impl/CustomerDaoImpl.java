@@ -2,10 +2,14 @@ package application.jconfig.dao.impl;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import application.jconfig.dao.CustomerDao;
 import application.jconfig.model.Customer;
 
+@Component
+@Transactional
 public class CustomerDaoImpl implements CustomerDao {
 	
 	@Autowired
