@@ -34,6 +34,7 @@ public class SubCategoryDaoImpl implements SubCategoryDao{
 		// TODO Auto-generated method stub
 		try {
 		Query<SubCategory> query=sessionFactory.getCurrentSession().createQuery("from SubCategory where category_categoryId=:id", SubCategory.class);
+		query.setParameter("id", categoryId);
 		return query.getResultList();
 		}catch (Exception e) {
 			// TODO: handle exception

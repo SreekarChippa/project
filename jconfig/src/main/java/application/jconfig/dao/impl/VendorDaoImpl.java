@@ -71,10 +71,15 @@ public class VendorDaoImpl implements VendorDao {
 
 	public Vendor login(String email, String password) {
 		// TODO Auto-generated method stub
+		try {
 		Query<Vendor> query=sessionFactory.getCurrentSession().createQuery("from Vendor where email=:email and password=:password",Vendor.class);
 		query.setParameter("email", email);
 		query.setParameter("password", password);
 		return query.getSingleResult();
+		}catch (Exception e) {
+			// TODO: handle exception
+		return null;
+		}
 	}
 
 	public Vendor getVendorByEmail(String email) {

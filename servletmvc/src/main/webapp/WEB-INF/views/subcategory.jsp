@@ -21,9 +21,9 @@
 <form action="getmodel" method="post">
 <div class="form-group">
 	<label for="subsell">SubCategories</label>
-	<select class="form-control" id="subsell" name="subCategoryName">
+	<select class="form-control" id="subsell" name="subCategoryId">
 		<c:forEach items="${subCategoryList}" var="subcategory">
-		<option value="${subcategory.subCategoryName}">${subcategory.subCategoryName}</option>
+		<option value="${subcategory.subCategoryId}">${subcategory.subCategoryName}</option>
 		</c:forEach>
 	</select>
 	<input type="submit" value="Go"/>
