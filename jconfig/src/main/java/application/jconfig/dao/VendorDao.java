@@ -1,5 +1,8 @@
 package application.jconfig.dao;
 
+import java.util.List;
+
+import application.jconfig.model.Product;
 import application.jconfig.model.Vendor;
 
 public interface VendorDao {
@@ -11,4 +14,6 @@ public interface VendorDao {
 	public Vendor getVendorByEmail(String email);
 	public Vendor login(String email,String password);
 	public boolean registerVendor(Vendor vendor);
+	public List<Vendor> getAllVendorDetails();
+	public List<Product> getProducts(int VendorId);
 }

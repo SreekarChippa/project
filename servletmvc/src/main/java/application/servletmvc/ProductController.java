@@ -1,5 +1,8 @@
 package application.servletmvc;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -17,6 +20,8 @@ import application.jconfig.dao.MobileDao;
 import application.jconfig.dao.SubCategoryDao;
 import application.jconfig.dao.TelevisionDao;
 import application.jconfig.dao.VendorDao;
+import application.jconfig.model.NumberOfProducts;
+import application.jconfig.model.Product;
 import application.jconfig.model.SubCategory;
 import application.jconfig.model.Vendor;
 import application.jconfig.model.product.Laptop;
@@ -98,5 +103,22 @@ public class ProductController {
 		
 	}
 	
-	 
+	private List<NumberOfProducts> listOfProducts(Product product){
+		List<NumberOfProducts> numberOfProductsList=new ArrayList<NumberOfProducts>();
+		for(int i=1;i<=product.getNumOfProducts();i++)
+		{
+			NumberOfProducts numberOfProducts=new NumberOfProducts();
+			numberOfProducts.setProduct(product);
+			numberOfProductsList.add(numberOfProducts);
+		}	
+		return numberOfProductsList;
+	}
+
+	@GetMapping("productdetails")
+	public String getProducts(HttpSession session,Model model) {
+		Vendor vendor=(Vendor)session.getAttribute("vendorDetails");
+		List<Product> products=vendorDao.getProducts(vendor.getVendorId());
+	    session.setAttribute("products",products);
+		return "productdetails";	
+	}
 }

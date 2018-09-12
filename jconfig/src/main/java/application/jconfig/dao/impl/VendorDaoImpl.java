@@ -1,5 +1,7 @@
 package application.jconfig.dao.impl;
 
+import java.util.List;
+
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -11,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 import application.jconfig.dao.VendorDao;
+import application.jconfig.model.Product;
 import application.jconfig.model.Vendor;
 
 @Component
@@ -102,6 +105,28 @@ public class VendorDaoImpl implements VendorDao {
 			return true;
 		} catch (Exception e) {
 			return false;
+		}
+	}
+
+	public List<Vendor> getAllVendorDetails() {
+		// TODO Auto-generated method stub
+		try {
+			Query<Vendor> query=sessionFactory.getCurrentSession().createQuery("from Vendor ",Vendor.class);
+			return query.getResultList();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	public List<Product> getProducts(int VendorId) {
+		// TODO Auto-generated method stub
+		try {
+			Query<Product> query=sessionFactory.getCurrentSession().createQuery("form Product where vendor_vendorId=:id", Product.class);
+			return query.getResultList();
+		} catch (Exception e) {
+		e.printStackTrace();
+		return null;
 		}
 	}
 	
