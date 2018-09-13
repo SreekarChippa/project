@@ -81,13 +81,6 @@ public class ProductController {
 		
 	}
 	
-	@PostMapping("mobileprocess")
-	public String addMobileProcess(@ModelAttribute("mobile")Mobile mobile) {
-		
-		mobileDao.addMobile(mobile);
-		return "vendorpage";
-	}
-	
 	@PostMapping("laptopprocess")
 	public String addLaptopProcess(@ModelAttribute("laptop")Laptop laptop) {
 		
@@ -101,6 +94,20 @@ public class ProductController {
 		televisionDao.addTelevision(television);
 		return "vendorpage";
 		
+	}
+	
+	@PostMapping("mobileprocess")
+	public String addMobileProcess(@ModelAttribute("mobile")Mobile mobile,HttpSession httpSession) {
+		List<NumberOfProducts> numberOfProducts=listOfProducts(mobile);
+		mobile.setNumberOfProducts(numberOfProducts);
+		if(mobileDao.addMobile(mobile)) {
+			return "vendorpage";
+		}
+		else {
+			return "getModel";
+		}
+		/*mobileDao.addMobile(mobile);
+		return "vendorpage";*/
 	}
 	
 	private List<NumberOfProducts> listOfProducts(Product product){

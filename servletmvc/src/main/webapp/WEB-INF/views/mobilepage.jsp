@@ -57,6 +57,11 @@
 				</div>
 				
 				<div class="form-group">
+				<springform:label path="numOfProducts">NumberOfProducts:</springform:label>
+				<springform:input path="numOfProducts"/>
+				</div>
+				
+				<div class="form-group">
 				<springform:label path="subCategory.subCategoryId">SubCategoryId:</springform:label>
 				<springform:input path="subCategory.subCategoryId" value="${subCategoryId}"/>
 				</div>
