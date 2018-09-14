@@ -6,4 +6,5 @@ public interface LaptopDao {
 	public boolean addLaptop(Laptop laptop);
 	public boolean deleteLaptop(Laptop laptop);
 	public boolean updateLaptop(Laptop laptop);
+	public Laptop getLaptopDetails(int productId);
 }

@@ -45,12 +45,12 @@
 				<div class="form-group">
 				<!-- 	<input type="password" id="inputPassword" class="form-control" > -->
 					<label for="password">Password:</label>
-      				<springform:input path="password" class="form-control" id="password"/>
+      				<springform:input type="password" path="password" class="form-control" id="password"/>
 				</div>
 				
 				<div class="form-group">
 					<label for="confirmPassword">Confirm Password:</label>
-      				<springform:input path="confirmPassword" class="form-control" id="confirmPassword"/>
+      				<springform:input type="password" path="confirmPassword" class="form-control" id="confirmPassword"/>
 				</div>
 				
 				<div class="form-group">

@@ -11,8 +11,10 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 @Component
@@ -27,6 +29,9 @@ public class Product {
 	private int warranty;
 	private int price;
 	private int numOfProducts;
+	
+	@Transient
+	private MultipartFile image;
 	
 	@ManyToOne
 	private Vendor vendor;
@@ -101,6 +106,14 @@ public class Product {
 		this.subCategory = subCategory;
 	}
 
+	public MultipartFile getImage() {
+		return image;
+	}
+
+	public void setImage(MultipartFile image) {
+		this.image = image;
+	}
+
 	public List<NumberOfProducts> getNumberOfProducts() {
 		return numberOfProducts;
 	}
@@ -112,8 +125,8 @@ public class Product {
 	@Override
 	public String toString() {
 		return "Product [productId=" + productId + ", brand=" + brand + ", model=" + model + ", warranty=" + warranty
-				+ ", price=" + price + ", numOfProducts=" + numOfProducts + ", vendor=" + vendor + ", subCategory="
-				+ subCategory + ", numberOfProducts=" + numberOfProducts + "]";
+				+ ", price=" + price + ", numOfProducts=" + numOfProducts + ", image=" + image + ", vendor=" + vendor
+				+ ", subCategory=" + subCategory + ", numberOfProducts=" + numberOfProducts + "]";
 	}
 	
 	

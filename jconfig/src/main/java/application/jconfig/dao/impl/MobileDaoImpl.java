@@ -49,4 +49,16 @@ public class MobileDaoImpl implements MobileDao{
 		
 	}
 
+	public Mobile getMobileDetails(int productId) {
+		// TODO Auto-generated method stub
+		try {
+			return sessionFactory.getCurrentSession().get(Mobile.class, productId);
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			return null;
+		}
+		
+	}
+
 }

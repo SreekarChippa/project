@@ -122,7 +122,7 @@ public class VendorDaoImpl implements VendorDao {
 	public List<Product> getProducts(int VendorId) {
 		// TODO Auto-generated method stub
 		try {
-			Query<Product> query=sessionFactory.getCurrentSession().createQuery("form Product where vendor_vendorId=:id", Product.class);
+			Query<Product> query=sessionFactory.getCurrentSession().createQuery("from Product where vendor_vendorId=:id", Product.class);
 			return query.getResultList();
 		} catch (Exception e) {
 		e.printStackTrace();

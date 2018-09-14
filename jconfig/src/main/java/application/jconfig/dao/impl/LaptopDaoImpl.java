@@ -49,6 +49,17 @@ public class LaptopDaoImpl implements LaptopDao {
 		}
 		
 	}
+
+	public Laptop getLaptopDetails(int productId) {
+		// TODO Auto-generated method stub
+		try {
+			return sessionFactory.getCurrentSession().get(Laptop.class, productId);
+		} catch (Exception e) {
+			// TODO: handle exception
+			return null;
+		}
+		
+	}
 	
 
 }

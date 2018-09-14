@@ -170,62 +170,7 @@ public class IndexController {
 		return "categories";
 	}
 	
-	/*@RequestMapping(value= {"/signup"},method=RequestMethod.GET)
-	public String signup(Model model) {
-		model.addAttribute("user", new User());
-		return "signup";
-	}
-	
-	@PostMapping("/register")
-	public String reister(@Valid @ModelAttribute("user")User user,BindingResult result,Model model) {
-		System.out.println(result.hasErrors());
-		if(!result.hasErrors())
-		{
-			if(userDao.getUserByEmail(user.getEmail())==null) {
-				userDao.addUser(user);
-				return "redirect:/login";
-			}
-			else {
-				model.addAttribute("message", "email is already existed");
-				return "signup";
-			}
-		}else {
-			return "signup";
-		}
-		
-	}
-	
-	@GetMapping("/login")
-	public String loginPage(Model model){
-		model.addAttribute("login", new Login());
-		return "/login";
-	}
-	
-	@PostMapping("/loginprocess")
-	public String login(@ModelAttribute("login")Login login,HttpSession httpSession) {
-		if( userDao.login(login.getEmail(), login.getPassword()) != null) {
-			User user= userDao.login(login.getEmail(), login.getPassword());
-			httpSession.setAttribute("profile", user);
-			
-			if(user.getRole().equalsIgnoreCase("admin")) {
-				   return  "adminpage";
-			   }else 
-			   if(user.getRole().equalsIgnoreCase("vendor")) {
-				   return  "vendorpage";
-			   } else
-			  
-				   return  "customerpage";
-		   		}
-				
-		else {
-			return "login";
-		}
-	
-	}
-	
-	
-	
-	@GetMapping("/profile")
+/*	@GetMapping("/profile")
 	public String profile() {
 		
 		return "profile";
@@ -273,6 +218,6 @@ public class IndexController {
 		userDao.updateUser(user);
 		return "redirect:/userdetails";
 		
-	}*/
-	
+	}
+	*/
 }

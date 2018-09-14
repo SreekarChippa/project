@@ -109,6 +109,9 @@
                 <li class="nav-item">
                   <a class="nav-link text-white" href="edit">Edit Profile</a>
                 </li>
+                <li class="nav-item">
+                  <a class="nav-link text-white" href="">Logout</a>
+                </li>
                
 
                  <!-- Dropdown -->
@@ -118,6 +121,7 @@
         </a>
         <div class="dropdown-menu">
           <a class="dropdown-item" href="categories">Add products</a>
+          <a class="dropdown-item" href="productdetails">View products</a>
         </div>
       </li>
 
