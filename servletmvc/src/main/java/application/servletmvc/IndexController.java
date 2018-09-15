@@ -170,35 +170,50 @@ public class IndexController {
 		return "categories";
 	}
 	
-/*	@GetMapping("/profile")
-	public String profile() {
-		
-		return "profile";
+	@GetMapping("vendorprofile")
+	public String getVendorDetails() {
+		return "vendorprofile";
 	}
 	
-	@GetMapping(value= {"edit"})
-	public String updateProfile(HttpSession httpSession,Model model) {
-		model.addAttribute("user", httpSession.getAttribute("profile"));
-		return "editprofile";
+	@GetMapping(value= {"editvendor"})
+	public String updateVendor(HttpSession httpSession,Model model)
+	{
+		model.addAttribute("vendor", httpSession.getAttribute("vendorDetails"));
+		return "vendoredit";
 	}
 	
-	@PostMapping("updateprofile")
-	public String updateProfileProcess(@ModelAttribute("user")User user,HttpSession httpSession) {
-		httpSession.setAttribute("profile", user);
-		userDao.updateUser(user);
-		return "redirect:profile";	
+	@PostMapping("vendorupdateprocess")
+	public String vendorUpdateProcess(@ModelAttribute("vendor")Vendor vendor,HttpSession session) {
+
+		    session.setAttribute("vendorDetails", vendor);
+			vendorDao.updateVendor(vendor);
+		    return  "vendorpage";
+			 
 	}
 	
-	@GetMapping("userdetails")
-	public String getUserDetails(Map<String ,Object> user) {
-		user.put("userList", userDao.getVendorDetails());	
-		return "userdetails";
+	@GetMapping("customerprofile")
+	public String getCustomerDetails() {
+		return "customerprofile";
 	}
 	
-	@GetMapping("userprofile")
-	public String getUserDetails() {
-		return "userprofile";
+	@GetMapping(value= {"editvendor"})
+	public String updateCustomer(HttpSession httpSession,Model model)
+	{
+		model.addAttribute("customer", httpSession.getAttribute("customerDetails"));
+		return "customeredit";
 	}
+	
+	@PostMapping("customerupdateprocess")
+	public String customerUpdateProcess(@ModelAttribute("customer")Customer customer,HttpSession session) {
+
+		    session.setAttribute("customerDetails", customer);
+			customerDao.updateCustomer(customer);
+		    return  "customerpage";
+			 
+	}
+	
+	
+/*	
 	
 	@GetMapping("accept/{userId}")
 	public String acceptUser(@PathVariable("userId")int userId) {

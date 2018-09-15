@@ -21,11 +21,12 @@
 		<c:forEach items="${productList}" var="product">
 			<div class="col-md-4">
 				<div class="thumbnail">
-					<a href="#"> <img src="<spring:url  value="/resources/images/products/${product.productId}.jpg"></spring:url>" alt="${product.brand }"
+					<a href="#"> <img src="<spring:url  value="/resources/images/products/${product.productId}.jpg"></spring:url>" alt="${product.brand}"
 							style="width: 100%">
 						</a>
 					<div class="caption">
-						<a href="viewproductspecifications/${product.productId }"><button class="btn btn-primary">view</button></a>
+						<a href="viewproductspecifications/${product.productId}"><button class="btn btn-primary">view</button></a>
+						<a href="editproductspecifications/${product.productId}"><button class="btn btn-primary">Edit</button></a>
 					</div>
 				</div>
 			</div>

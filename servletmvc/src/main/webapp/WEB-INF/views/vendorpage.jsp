@@ -104,10 +104,10 @@
                   <a class="nav-link text-white" href="home">Home</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link text-white" href="profile">Profile</a>
+                  <a class="nav-link text-white" href="vendorprofile">Profile</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link text-white" href="edit">Edit Profile</a>
+                  <a class="nav-link text-white" href="editvendor">Edit Profile</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link text-white" href="">Logout</a>

@@ -32,8 +32,14 @@ public class CategoryDaoImpl implements CategoryDao {
 
 	public List<Category> getCategories() {
 		// TODO Auto-generated method stub
-		Query<Category> query=sessionFactory.getCurrentSession().createQuery("from Category", Category.class);
-		return query.getResultList();
+		try {
+			Query<Category> query=sessionFactory.getCurrentSession().createQuery("from Category", Category.class);
+			return query.getResultList();	
+		} catch (Exception e) {
+			// TODO: handle exception
+			return null;
+		}
+		
 	}
 
 	public Category getCategoryById(int categoryId) {

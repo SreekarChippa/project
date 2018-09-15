@@ -60,6 +60,9 @@ public class ProductController {
 	@Autowired
 	private ProductDao productDao;
 	
+	@Autowired
+	private ImageUpload imageUpload;
+	
 	@PostMapping("subcategory")
 	public String getSubCategory(@RequestParam("category")int categoryId,Model model) {
 		model.addAttribute("subCategoryList", subCategoryDao.getsubCategories(categoryId));
@@ -93,10 +96,17 @@ public class ProductController {
 	}
 	
 	@PostMapping("laptopprocess")
-	public String addLaptopProcess(@ModelAttribute("laptop")Laptop laptop) {
+	public String addLaptopProcess(@ModelAttribute("laptop")Laptop laptop,HttpSession httpSession,HttpServletRequest request) {
+		List<NumberOfProducts> numberOfProducts=listOfProducts(laptop);
+		laptop.setNumberOfProducts(numberOfProducts);
 		
-		laptopDao.addLaptop(laptop);
-		return "vendorpage";
+		if(laptopDao.addLaptop(laptop)) {
+			imageUpload.uploadImage(laptop, request);
+			return "vendorpage";
+		}else {
+			return "getmodel";
+		}
+		
 	}
 	
 	@PostMapping("televisionprocess")
@@ -114,38 +124,7 @@ public class ProductController {
 			
 		if(mobileDao.addMobile(mobile)) {
 			
-			String contextPath=request.getRealPath("/");
-			File file=new File(contextPath+"/resources/images/products");
-			
-			if(!file.exists()) {
-				file.mkdir();
-			}
-			
-			FileOutputStream fileOutputStream=null;
-			try {
-				fileOutputStream=new FileOutputStream(file.getPath()+"/"+mobile.getProductId()+".jpg");
-				System.out.println(mobile.getImage());
-				System.out.println(mobile.getBrand());
-				InputStream inputStream=mobile.getImage().getInputStream();
-				byte[] imageBytes=new byte[inputStream.available()];
-				inputStream.read(imageBytes);
-				
-				fileOutputStream.write(imageBytes);
-				fileOutputStream.flush();
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}finally {
-				 try {
-					fileOutputStream.close();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
+			imageUpload.uploadImage(mobile, request);
 			
 			return "vendorpage";
 		}
@@ -165,34 +144,64 @@ public class ProductController {
 		}	
 		return numberOfProductsList;
 	}
-
+	
 	@GetMapping("productdetails")
-	public String getProducts(HttpSession session,Model model,Map<String, Object>products) {
+	public String getProducts(HttpSession session,Model model,Map<String, Object> products) {
 		Vendor vendor=(Vendor)session.getAttribute("vendorDetails");
 		products.put("productList", productDao.getAllProducts(vendor.getVendorId()));
 		
-	    session.setAttribute("products",products);
-		return "productdetails";	
+		return "prodetails";
+		
 	}
 	
 	@GetMapping("viewproductspecifications/{productId}")
 	public String viewProducts(@PathVariable("productId")int productId,Model model) {
 		String name=subCategoryDao.getSubCategory(productDao.getSubCategoryId(productId)).getSubCategoryName();
+		System.out.println(name);
 		
 		switch (name) {
-		case "Mobile":model.addAttribute("mobile", mobileDao.getMobileDetails(productId));
-			return "mobilespecs";
-		
-		case "Laptop":model.addAttribute("laptop", laptopDao.getLaptopDetails(productId));
+		case "mobile":
+			model.addAttribute("mobile", mobileDao.getMobileDetails(productId));
+			return "ms";
+	
+		case "laptop":
+			model.addAttribute("laptop", laptopDao.getLaptopDetails(productId));
 			return "laptopspecs";
 
-		default:return "productdetails";
+		default:return "redirect:/productdetails";
 			
-		}	
-		
+		}
 	}
 	
+	@GetMapping("editproductspecifications/{productId}")
+	public String editProducts(@PathVariable("productId")int productId,Model model) {
+		String name=subCategoryDao.getSubCategory(productDao.getSubCategoryId(productId)).getSubCategoryName();
+		
+		switch (name) {
+		case "mobile":
+		
+			model.addAttribute("mobile", mobileDao.getMobileDetails(productId));
+					  
+			return "editmobilespecs";
+		
+		case "laptop":
+			
+			model.addAttribute("laptop", laptopDao.getLaptopDetails(productId));
+			return "editlaptopspecs";
+
+		default:
+			return "productdetails";
+			
+		}
+	}
 	
-	
+	@PostMapping("editmobileprocess")
+	public String editMobileProductDetails(@ModelAttribute("mobile") Mobile mobile,HttpServletRequest request) {
+		if(!mobile.getImage().isEmpty()) {
+			imageUpload.uploadImage(mobile, request);
+		}
+		mobileDao.updateMobile(mobile);
+		return "vendorpage";
+	}
 	
 }

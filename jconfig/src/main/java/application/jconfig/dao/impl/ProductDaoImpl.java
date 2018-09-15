@@ -58,7 +58,7 @@ public class ProductDaoImpl implements ProductDao {
 	public int getSubCategoryId(int productId) {
 		// TODO Auto-generated method stub
 		try {
-			Query<Product> query = sessionFactory.getCurrentSession().createQuery("form Product where productId=:id", Product.class);
+			Query<Product> query = sessionFactory.getCurrentSession().createQuery("from Product where productId=:id", Product.class);
 			query.setParameter("id", productId);
 			Product product=query.getSingleResult();
 			return product.getSubCategory().getSubCategoryId();	

@@ -9,9 +9,9 @@
 <body>
 
 <table>
-	<tr>
+		<tr>
 		<td>Brand:</td>
-		<td>${laptop.brand}</td>
+		<td>${mobile.brand}</td>
 	</tr>
 </table>
 

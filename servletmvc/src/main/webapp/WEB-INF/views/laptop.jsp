@@ -22,7 +22,7 @@
 <div class="bg">
 	<div class="container-fluid bg">
 		<div class="row">
-			<springform:form action="laptopprocess" method="POST" modelAttribute="laptop">
+			<springform:form action="laptopprocess" method="POST" modelAttribute="laptop" enctype="multipart/form-data">
 				
 				<div class="form-group">
 				<springform:label path="laptopRam">Ram:</springform:label>
@@ -57,6 +57,11 @@
 				<div class="form-group">
 				<springform:label path="warranty">Warranty:</springform:label>
 				<springform:input path="warranty"/>
+				</div>
+				
+				<div class="form-group">
+				<springform:label path="image">Image:</springform:label>
+				<springform:input type="file" class="form-control" path="image"/>
 				</div>
 				
 				<div class="form-group">
