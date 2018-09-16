@@ -26,6 +26,7 @@ import org.springframework.web.servlet.ModelAndViewDefiningException;
 
 import application.jconfig.dao.CategoryDao;
 import application.jconfig.dao.CustomerDao;
+import application.jconfig.dao.SubCategoryDao;
 import application.jconfig.dao.UserDao;
 import application.jconfig.dao.VendorDao;
 import application.jconfig.model.Customer;
@@ -44,6 +45,12 @@ public class IndexController {
 
 	@Autowired
 	private CategoryDao categoryDao;
+	
+	@Autowired
+	private SubCategoryDao subCategoryDao;
+	
+	@Autowired
+	private UserDao userDao;
 	
 	/*	
 	@RequestMapping("/")
@@ -68,7 +75,8 @@ public class IndexController {
 	*/
 	
 	@RequestMapping("/")
-	public ModelAndView indexPage() {
+	public ModelAndView indexPage(Model model) {
+		model.addAttribute("subCategory", subCategoryDao.getAllSubCategories());
 		ModelAndView mav=new ModelAndView("index");
 		return mav;
 	}
@@ -193,14 +201,14 @@ public class IndexController {
 	
 	@GetMapping("customerprofile")
 	public String getCustomerDetails() {
-		return "customerprofile";
+		return "redirect:/customerprofile";
 	}
 	
-	@GetMapping(value= {"editvendor"})
+	@GetMapping(value= {"editcustomer"})
 	public String updateCustomer(HttpSession httpSession,Model model)
 	{
 		model.addAttribute("customer", httpSession.getAttribute("customerDetails"));
-		return "customeredit";
+		return "redirect:/customeredit";
 	}
 	
 	@PostMapping("customerupdateprocess")
@@ -208,12 +216,9 @@ public class IndexController {
 
 		    session.setAttribute("customerDetails", customer);
 			customerDao.updateCustomer(customer);
-		    return  "customerpage";
-			 
+		    return  "customerpage"; 
 	}
 	
-	
-/*	
 	
 	@GetMapping("accept/{userId}")
 	public String acceptUser(@PathVariable("userId")int userId) {
@@ -234,5 +239,6 @@ public class IndexController {
 		return "redirect:/userdetails";
 		
 	}
-	*/
+	
+	
 }

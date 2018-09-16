@@ -7,4 +7,5 @@ import application.jconfig.model.SubCategory;
 public interface SubCategoryDao {
 	public SubCategory getSubCategory(int subCategoryId);
 	public List<SubCategory> getsubCategories(int categoryId);
+	public List<SubCategory> getAllSubCategories();
 }

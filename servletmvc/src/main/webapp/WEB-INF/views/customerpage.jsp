@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1" isELIgnored="false"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
  <head>
@@ -38,26 +38,75 @@
                 <li class="nav-item">
                   <a class="nav-link text-white" href="">Logout</a>
                 </li>
-               
-
-                 <!-- Dropdown -->
-    <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-          Categories
-        </a>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="#">Electronics</a>
-          <a class="dropdown-item" href="#">Men</a>
-          <a class="dropdown-item" href="#">Women</a>
-          <a class="dropdown-item" href="#">Kids</a>
-          <a class="dropdown-item" href="#">Tv's & appliances</a>
-        </div>
-      </li>
-
-	</ul>
-  </div>
+			</ul>
+  		</div>
 </nav>  
+      
+<nav class="navbar navbar-expand-sm bg-light navbar-light justify-content-center">
+  <form class="form-inline" action="/action_page.php">
+    <input class="form-control mr-sm-2" type="text" placeholder="Search">
+    <button class="btn btn-success" type="submit">Search</button>
+  </form>
+</nav>
        
+<nav class="navbar navbar-expand-sm bg-light justify-content-center">
+   <ul class="navbar-nav">
+    <!-- Dropdown -->
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        Electronics
+      </a>
+      <div class="dropdown-menu">
+      <c:forEach  items="${subCategory}" var="electronic">
+					<a class="dropdown-item" href="products/${electronic.subCategoryId}">${electronic.subCategoryName}</a> 
+	  </c:forEach>
+        <!-- <a class="dropdown-item" href="#">Mobile</a>
+        <a class="dropdown-item" href="#">Laptop</a>
+        <a class="dropdown-item" href="#">Tablet</a> -->
+      </div>
+    </li>
+     <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        Men
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Link 1</a>
+        <a class="dropdown-item" href="#">Link 2</a>
+        <a class="dropdown-item" href="#">Link 3</a>
+      </div>
+    </li>
+     <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        Women
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Link 1</a>
+        <a class="dropdown-item" href="#">Link 2</a>
+        <a class="dropdown-item" href="#">Link 3</a>
+      </div>
+    </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        Kids
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Link 1</a>
+        <a class="dropdown-item" href="#">Link 2</a>
+        <a class="dropdown-item" href="#">Link 3</a>
+      </div>
+    </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        Home appliances
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Link 1</a>
+        <a class="dropdown-item" href="#">Link 2</a>
+        <a class="dropdown-item" href="#">Link 3</a>
+      </div>
+    </li>
+  </ul>
+</nav>
     
            
     </body>

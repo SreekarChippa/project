@@ -17,12 +17,29 @@
 </head>
 <body>
 
-  <nav class="navbar navbar-expand-md bg-dark navbar-dark"> <a
-    class="navbar-brand text-warning" href="">Ecommerce</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse"
-    data-target="#collapsibleNavbar">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+   <div class="navbar navbar-collapse justify-content-left"> 
+  <a class="navbar-brand text-warning" href="">Ecommerce</a>
+  </div>
+  <div class="navbar-navbar justify-content-end">
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link" href="#">HOME</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">ABOUT US</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">CONTACT US</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link disabled" href="adminlogin">ADMIN</a>
+    </li>
+  </ul>
+  </div>
+</nav>
+
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark"> 
    <div class="dropdown collapse navbar-collapse justify-content-left">
     <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown">
       Vendor
@@ -32,7 +49,8 @@
       <a class="dropdown-item" href="vendorlogin">Login</a>
     </div>
   </div>
-   <div class="dropdown">
+  
+   <div class="dropdown collapse navbar-collapse justify-content-end">
     <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown">
       Customer
     </button>
@@ -42,44 +60,72 @@
     </div>
   </div>
   </nav>
-
-</body>
-</html>
-
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Ecommerce</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
-
-</head>
-<body>
-
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
-      <a class="navbar-brand" href="#">Ecommerce</a>
-    </div>
-
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="vendorsignup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a href="vendorlogin"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-      </ul>
-    </div>
-
-  </div>
+  
+  <nav class="navbar navbar-expand-sm bg-light navbar-light justify-content-center">
+  <form class="form-inline" action="/action_page.php">
+    <input class="form-control mr-sm-2" type="text" placeholder="Search">
+    <button class="btn btn-success" type="submit">Search</button>
+  </form>
+</nav>
+       
+<nav class="navbar navbar-expand-sm bg-light justify-content-center">
+   <ul class="navbar-nav">
+    <!-- Dropdown -->
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        Electronics
+      </a>
+      <div class="dropdown-menu">
+      <c:forEach  items="${subCategory}" var="electronic">
+					<a class="dropdown-item" href="products/${electronic.subCategoryId}">${electronic.subCategoryName}</a> 
+	  </c:forEach>
+        <!-- <a class="dropdown-item" href="#">Mobile</a>
+        <a class="dropdown-item" href="#">Laptop</a>
+        <a class="dropdown-item" href="#">Tablet</a> -->
+      </div>
+    </li>
+     <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        Men
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Link 1</a>
+        <a class="dropdown-item" href="#">Link 2</a>
+        <a class="dropdown-item" href="#">Link 3</a>
+      </div>
+    </li>
+     <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        Women
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Link 1</a>
+        <a class="dropdown-item" href="#">Link 2</a>
+        <a class="dropdown-item" href="#">Link 3</a>
+      </div>
+    </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        Kids
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Link 1</a>
+        <a class="dropdown-item" href="#">Link 2</a>
+        <a class="dropdown-item" href="#">Link 3</a>
+      </div>
+    </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        Home appliances
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Link 1</a>
+        <a class="dropdown-item" href="#">Link 2</a>
+        <a class="dropdown-item" href="#">Link 3</a>
+      </div>
+    </li>
+  </ul>
 </nav>
 
 </body>
 </html>
- -->

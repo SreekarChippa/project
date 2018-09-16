@@ -18,6 +18,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import application.jconfig.dao.AccountDao;
 import application.jconfig.dao.AddressDao;
+import application.jconfig.dao.AdminDao;
 import application.jconfig.dao.CategoryDao;
 import application.jconfig.dao.CustomerDao;
 import application.jconfig.dao.LaptopDao;
@@ -28,6 +29,7 @@ import application.jconfig.dao.UserDao;
 import application.jconfig.dao.VendorDao;
 import application.jconfig.model.Account;
 import application.jconfig.model.Address;
+import application.jconfig.model.Admin;
 import application.jconfig.model.Category;
 import application.jconfig.model.Customer;
 import application.jconfig.model.HibernateConfiguration;
@@ -53,6 +55,11 @@ public class AppTest
 	private Customer customer;
 	@Autowired
 	private CustomerDao customerDao;
+	
+	@Autowired
+	private Admin admin;
+	@Autowired
+	private AdminDao adminDao;
 	
 	@Autowired
 	private User user;
@@ -110,23 +117,28 @@ public class AppTest
 		user.setConfirmPassword("sreekar");
 		user.setRole("admin");*/
 		
-		vendor.setName("sreekar");
-		vendor.setEmail("sreekar@gmail.com");
-		vendor.setMobile("7032343530");
+		/*vendor.setName("sreekar");
+		vendor.setEmail("sreekarchippa@gmail.com");
+		vendor.setMobile("9290114499");
 		vendor.setCompanyName("amazon");
 		vendor.setPassword("sreekar");
 		vendor.setConfirmPassword("sreekar");
-		
+*/		
+		admin.setName("sreekar");
+		admin.setMobile("7032343535");
+		admin.setEmail("sreekarch@gmail.com");
+		admin.setPassword("123");
+		admin.setConfirmPassword("123");
 	}
 	
 	@Test
 	public void test() {
-		assertEquals("Test Failed", true, vendorDao.addVendor(vendor));
+		assertEquals("Test Failed", true, adminDao.addAdmin(admin));
 	}
 	
 	@After
 	public void delete() {
-		assertEquals("Deleting Failed", true, vendorDao.deleteVendor(vendor));
+		assertEquals("Deleting Failed", true, adminDao.deleteAdmin(admin));
 	}
 	
 	

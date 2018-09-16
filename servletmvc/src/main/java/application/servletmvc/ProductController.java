@@ -204,4 +204,11 @@ public class ProductController {
 		return "vendorpage";
 	}
 	
+	@GetMapping("products/{subCategoryId}")
+	public String getProducts(@PathVariable("subCategoryId")int subCategoryId,Map<String,Object> products) {
+		
+		products.put("productList",productDao.getAllProducts(subCategoryId));
+		return "product";
+	}
+	
 }

@@ -42,6 +42,17 @@ public class SubCategoryDaoImpl implements SubCategoryDao{
 		}
 		
 	}
+
+	public List<SubCategory> getAllSubCategories() {
+		// TODO Auto-generated method stub
+		try {
+			return sessionFactory.getCurrentSession().createCriteria(SubCategory.class).list();
+		} catch (Exception e) {
+			// TODO: handle exception
+			return null;
+		}
+		
+	}
 	
 	
 }
