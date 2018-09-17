@@ -52,6 +52,12 @@ public class Vendor {
 	
 	private boolean status;
 	
+	private final String role="vendor";
+	
+	public String getRole() {
+		return role;
+	}
+
 	@OneToMany(mappedBy = "vendor", cascade = CascadeType.ALL)
 	private Set<VendorAddress> vendorAddress;
 
@@ -142,7 +148,8 @@ public class Vendor {
 	public String toString() {
 		return "Vendor [vendorId=" + vendorId + ", name=" + name + ", email=" + email + ", mobile=" + mobile
 				+ ", companyName=" + companyName + ", password=" + password + ", confirmPassword=" + confirmPassword
-				+ ", status=" + status + "]";
+				+ ", status=" + status + ", role=" + role + ", vendorAddress=" + vendorAddress + ", product=" + product
+				+ "]";
 	}
 	
 	

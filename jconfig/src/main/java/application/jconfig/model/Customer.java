@@ -44,6 +44,10 @@ public class Customer {
 	@Transient
 	private String confirmPassword;
 	
+	private boolean status=true;
+	
+	private final String role="customer";
+	
 	@OneToMany(mappedBy="customer",cascade=CascadeType.ALL)
 	private Set<CustomerAddress> customerAddress;
 
@@ -53,6 +57,26 @@ public class Customer {
 
 	public void setCustomerId(int customerId) {
 		this.customerId = customerId;
+	}
+
+	public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
+
+	public Set<CustomerAddress> getCustomerAddress() {
+		return customerAddress;
+	}
+
+	public void setCustomerAddress(Set<CustomerAddress> customerAddress) {
+		this.customerAddress = customerAddress;
+	}
+
+	public String getRole() {
+		return role;
 	}
 
 	public String getName() {
@@ -98,7 +122,8 @@ public class Customer {
 	@Override
 	public String toString() {
 		return "Customer [customerId=" + customerId + ", name=" + name + ", email=" + email + ", mobile=" + mobile
-				+ ", password=" + password + ", confirmPassword=" + confirmPassword + "]";
+				+ ", password=" + password + ", confirmPassword=" + confirmPassword + ", status=" + status + ", role="
+				+ role + ", customerAddress=" + customerAddress + "]";
 	}
 	
 	

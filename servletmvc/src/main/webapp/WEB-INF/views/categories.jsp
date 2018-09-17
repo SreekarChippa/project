@@ -18,6 +18,16 @@
 </head>
 <body>
 
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <ul class="navbar-nav">
+   
+    <li class="nav-item">
+      <a class="nav-link" href="vendorpage">Vendor page</a>
+    </li>
+  
+  </ul>
+</nav>
+
 <form action="subcategory" method="post">
 	<div class="form-group">
 		<label for="sell">Categories</label>

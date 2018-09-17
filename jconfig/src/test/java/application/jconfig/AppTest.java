@@ -46,7 +46,7 @@ import junit.framework.TestSuite;
 @RunWith(SpringJUnit4ClassRunner.class)
 public class AppTest 
 {
-	@Autowired
+/*	@Autowired
 	private Vendor vendor;
 	@Autowired
 	private VendorDao vendorDao;
@@ -54,14 +54,14 @@ public class AppTest
 	@Autowired
 	private Customer customer;
 	@Autowired
-	private CustomerDao customerDao;
+	private CustomerDao customerDao;*/
 	
 	@Autowired
 	private Admin admin;
 	@Autowired
 	private AdminDao adminDao;
 	
-	@Autowired
+/*	@Autowired
 	private User user;
 	@Autowired
 	private UserDao userDao;
@@ -103,7 +103,7 @@ public class AppTest
 	private SubCategoryDao subCategoryDao;
 	
 	private Address address1;
-	private Address address2;
+	private Address address2;*/
 
 	@Before
 	public void setUp() {
@@ -124,15 +124,16 @@ public class AppTest
 		vendor.setPassword("sreekar");
 		vendor.setConfirmPassword("sreekar");
 */		
-		admin.setName("sreekar");
-		admin.setMobile("7032343535");
-		admin.setEmail("sreekarch@gmail.com");
+		admin.setName("sreekarch");
+		admin.setMobile("7033343535");
+		admin.setEmail("sree@gmail.com");
 		admin.setPassword("123");
 		admin.setConfirmPassword("123");
 	}
 	
 	@Test
 	public void test() {
+		System.out.println(admin.getAdminId());
 		assertEquals("Test Failed", true, adminDao.addAdmin(admin));
 	}
 	

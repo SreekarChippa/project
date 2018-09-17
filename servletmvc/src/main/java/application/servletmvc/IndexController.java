@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.ModelAndViewDefiningException;
 
+import application.jconfig.dao.AdminDao;
 import application.jconfig.dao.CategoryDao;
 import application.jconfig.dao.CustomerDao;
 import application.jconfig.dao.SubCategoryDao;
@@ -51,6 +52,9 @@ public class IndexController {
 	
 	@Autowired
 	private UserDao userDao;
+	
+	@Autowired
+	private AdminDao adminDao;
 	
 	/*	
 	@RequestMapping("/")
