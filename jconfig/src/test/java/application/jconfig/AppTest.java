@@ -18,7 +18,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import application.jconfig.dao.AccountDao;
 import application.jconfig.dao.AddressDao;
-import application.jconfig.dao.AdminDao;
 import application.jconfig.dao.CategoryDao;
 import application.jconfig.dao.CustomerDao;
 import application.jconfig.dao.LaptopDao;
@@ -29,7 +28,6 @@ import application.jconfig.dao.UserDao;
 import application.jconfig.dao.VendorDao;
 import application.jconfig.model.Account;
 import application.jconfig.model.Address;
-import application.jconfig.model.Admin;
 import application.jconfig.model.Category;
 import application.jconfig.model.Customer;
 import application.jconfig.model.HibernateConfiguration;
@@ -56,10 +54,10 @@ public class AppTest
 	@Autowired
 	private CustomerDao customerDao;*/
 	
-	@Autowired
+	/*@Autowired
 	private Admin admin;
 	@Autowired
-	private AdminDao adminDao;
+	private AdminDao adminDao;*/
 	
 /*	@Autowired
 	private User user;
@@ -105,10 +103,10 @@ public class AppTest
 	private Address address1;
 	private Address address2;*/
 
-	@Before
+/*	@Before
 	public void setUp() {
 		
-		AnnotationConfigApplicationContext context=new AnnotationConfigApplicationContext(HibernateConfiguration.class);
+		AnnotationConfigApplicationContext context=new AnnotationConfigApplicationContext(HibernateConfiguration.class);*/
 		
 		/*user.setName("sreekar");
 		user.setEmail("sreekar@gmail.com");
@@ -124,7 +122,7 @@ public class AppTest
 		vendor.setPassword("sreekar");
 		vendor.setConfirmPassword("sreekar");
 */		
-		admin.setName("sreekarch");
+		/*admin.setName("sreekarch");
 		admin.setMobile("7033343535");
 		admin.setEmail("sree@gmail.com");
 		admin.setPassword("123");
@@ -140,7 +138,7 @@ public class AppTest
 	@After
 	public void delete() {
 		assertEquals("Deleting Failed", true, adminDao.deleteAdmin(admin));
-	}
+	}*/
 	
 	
 /*	@Before

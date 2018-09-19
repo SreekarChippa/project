@@ -54,7 +54,7 @@ public class AdminDaoImpl implements AdminDao {
 	public Admin login(String email, String password) {
 		// TODO Auto-generated method stub
 		try {
-			Query<Admin> query=sessionFactory.getCurrentSession().createQuery("from Admin where email=:email and password=:password", Admin.class);
+			Query<Admin> query=sessionFactory.getCurrentSession().createQuery("from admindetails where email=:email and password=:password", Admin.class);
 			query.setParameter("email", email);
 			query.setParameter("password", password);
 			return query.getSingleResult();

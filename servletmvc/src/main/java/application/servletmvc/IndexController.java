@@ -2,6 +2,7 @@ package application.servletmvc;
 
 import java.lang.ProcessBuilder.Redirect;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 import javax.enterprise.inject.New;
@@ -30,8 +31,10 @@ import application.jconfig.dao.CustomerDao;
 import application.jconfig.dao.SubCategoryDao;
 import application.jconfig.dao.UserDao;
 import application.jconfig.dao.VendorDao;
+import application.jconfig.model.Admin;
 import application.jconfig.model.Customer;
 import application.jconfig.model.Login;
+import application.jconfig.model.SubCategory;
 import application.jconfig.model.User;
 import application.jconfig.model.Vendor;
 
@@ -56,33 +59,41 @@ public class IndexController {
 	@Autowired
 	private AdminDao adminDao;
 	
-	/*	
-	@RequestMapping("/")
-	public ModelAndView indexPage() {
+	
+	@GetMapping(value = { "/" })
+	public ModelAndView indexPage(Model model,HttpSession session) {
 		ModelAndView mav=new ModelAndView("index");
+		
+		session.setAttribute("electronics",subCategoryDao.getElectronics());
+	    
 		return mav;
 	}
 	
-	@RequestMapping("/aboutus")
-	public ModelAndView aboutUs(){
-		ModelAndView mav2=new ModelAndView("AboutUs");
-		mav2.addObject("date", new Date());
-		return mav2;
+	@GetMapping("index")
+	public ModelAndView openIndex() {
+		ModelAndView modelAndView = new ModelAndView("index");
+		return modelAndView;
 	}
 	
-	@RequestMapping("/contact")
-	public String contactUs(Model model) {
-		model.addAttribute("contact", "7032343530");
-		return "ContactUs";
+	@GetMapping("adminlogin")
+	public String adminlogin() {
+		return "adminlogin";
 	}
 	
-	*/
-	
-	@RequestMapping("/")
-	public ModelAndView indexPage(Model model) {
-		model.addAttribute("subCategory", subCategoryDao.getAllSubCategories());
-		ModelAndView mav=new ModelAndView("index");
-		return mav;
+	@PostMapping("adminloginprocess")
+	public  String  adminlogin(HttpServletRequest request,HttpSession session)
+	{
+	   if((adminDao.login(request.getParameter("email"),request.getParameter("password")))!=null) {
+		   System.out.println(request.getParameter("email"));
+		   Admin admin=adminDao.login(request.getParameter("email"),request.getParameter("password"));
+		   
+		   session.setAttribute("adminDetails",admin);
+		   
+		    return "adminpage";
+	   }
+	   else {	   
+		   return "adminlogin";
+	   }
 	}
 	
 	@GetMapping(value= {"vendorsignup"})
@@ -205,7 +216,7 @@ public class IndexController {
 	
 	@GetMapping("customerprofile")
 	public String getCustomerDetails() {
-		return "redirect:/customerprofile";
+		return "customerprofile";
 	}
 	
 	@GetMapping(value= {"editcustomer"})

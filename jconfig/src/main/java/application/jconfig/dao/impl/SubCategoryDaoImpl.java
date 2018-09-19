@@ -53,6 +53,62 @@ public class SubCategoryDaoImpl implements SubCategoryDao{
 		}
 		
 	}
+
+	public List<SubCategory> getElectronics() {
+		// TODO Auto-generated method stub
+		try {
+			Query<SubCategory> query=sessionFactory.getCurrentSession().createQuery("from SubCategory where category_categoryId=1", SubCategory.class);
+			return query.getResultList();
+		} catch (Exception e) {
+			// TODO: handle exception
+			return null;
+		}
+		
+	}
+
+	public List<SubCategory> getMen() {
+		// TODO Auto-generated method stub
+		try {
+			Query<SubCategory> query=sessionFactory.getCurrentSession().createQuery("from subCategory where category_categoryId=2", SubCategory.class);
+			return query.getResultList();
+		} catch (Exception e) {
+			// TODO: handle exception
+			return null;
+		}
+	}
+
+	public List<SubCategory> getWomen() {
+		// TODO Auto-generated method stub
+		try {
+			Query<SubCategory> query=sessionFactory.getCurrentSession().createQuery("from subCategory where category_categoryId=3", SubCategory.class);
+			return query.getResultList();
+		} catch (Exception e) {
+			// TODO: handle exception
+			return null;
+		}
+	}
+
+	public List<SubCategory> getKids() {
+		// TODO Auto-generated method stub
+		try {
+			Query<SubCategory> query=sessionFactory.getCurrentSession().createQuery("from subCategory where category_categoryId=4", SubCategory.class);
+			return query.getResultList();
+		} catch (Exception e) {
+			// TODO: handle exception
+			return null;
+		}
+	}
+
+	public List<SubCategory> getHomeAppliances() {
+		// TODO Auto-generated method stub
+		try {
+			Query<SubCategory> query=sessionFactory.getCurrentSession().createQuery("from subCategory where category_categoryId=5", SubCategory.class);
+			return query.getResultList();
+		} catch (Exception e) {
+			// TODO: handle exception
+			return null;
+		}
+	}
 	
 	
 }

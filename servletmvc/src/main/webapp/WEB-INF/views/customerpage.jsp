@@ -30,7 +30,7 @@
                   <a class="nav-link text-white" href="home">Home</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link text-white" href="profile">Profile</a>
+                  <a class="nav-link text-white" href="customerprofile">Profile</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link text-white" href="edit">Edit Profile</a>
