@@ -80,7 +80,7 @@ public class IndexController {
 		return "adminlogin";
 	}
 	
-	@PostMapping("adminloginprocess")
+	/*@PostMapping("adminloginprocess")
 	public  String  adminlogin(HttpServletRequest request,HttpSession session)
 	{
 	   if((adminDao.login(request.getParameter("email"),request.getParameter("password")))!=null) {
@@ -94,7 +94,7 @@ public class IndexController {
 	   else {	   
 		   return "adminlogin";
 	   }
-	}
+	}*/
 	
 	@GetMapping(value= {"vendorsignup"})
 	public String signupVendor(Model model)

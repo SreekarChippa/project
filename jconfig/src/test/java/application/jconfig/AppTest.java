@@ -18,6 +18,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import application.jconfig.dao.AccountDao;
 import application.jconfig.dao.AddressDao;
+import application.jconfig.dao.AdminDao;
 import application.jconfig.dao.CategoryDao;
 import application.jconfig.dao.CustomerDao;
 import application.jconfig.dao.LaptopDao;
@@ -28,6 +29,7 @@ import application.jconfig.dao.UserDao;
 import application.jconfig.dao.VendorDao;
 import application.jconfig.model.Account;
 import application.jconfig.model.Address;
+import application.jconfig.model.Admin;
 import application.jconfig.model.Category;
 import application.jconfig.model.Customer;
 import application.jconfig.model.HibernateConfiguration;
@@ -44,7 +46,7 @@ import junit.framework.TestSuite;
 @RunWith(SpringJUnit4ClassRunner.class)
 public class AppTest 
 {
-/*	@Autowired
+	@Autowired
 	private Vendor vendor;
 	@Autowired
 	private VendorDao vendorDao;
@@ -52,14 +54,14 @@ public class AppTest
 	@Autowired
 	private Customer customer;
 	@Autowired
-	private CustomerDao customerDao;*/
+	private CustomerDao customerDao;
 	
-	/*@Autowired
+	@Autowired
 	private Admin admin;
 	@Autowired
-	private AdminDao adminDao;*/
+	private AdminDao adminDao;
 	
-/*	@Autowired
+	@Autowired
 	private User user;
 	@Autowired
 	private UserDao userDao;
@@ -101,12 +103,12 @@ public class AppTest
 	private SubCategoryDao subCategoryDao;
 	
 	private Address address1;
-	private Address address2;*/
+	private Address address2;
 
-/*	@Before
+	@Before
 	public void setUp() {
 		
-		AnnotationConfigApplicationContext context=new AnnotationConfigApplicationContext(HibernateConfiguration.class);*/
+		AnnotationConfigApplicationContext context=new AnnotationConfigApplicationContext(HibernateConfiguration.class);
 		
 		/*user.setName("sreekar");
 		user.setEmail("sreekar@gmail.com");
@@ -115,30 +117,29 @@ public class AppTest
 		user.setConfirmPassword("sreekar");
 		user.setRole("admin");*/
 		
-		/*vendor.setName("sreekar");
-		vendor.setEmail("sreekarchippa@gmail.com");
-		vendor.setMobile("9290114499");
+		vendor.setName("raghu");
+		vendor.setEmail("raghu@gmail.com");
+		vendor.setMobile("9848022338");
 		vendor.setCompanyName("amazon");
-		vendor.setPassword("sreekar");
-		vendor.setConfirmPassword("sreekar");
-*/		
+		vendor.setPassword("123");
+		vendor.setConfirmPassword("123");
+		
 		/*admin.setName("sreekarch");
 		admin.setMobile("7033343535");
 		admin.setEmail("sree@gmail.com");
 		admin.setPassword("123");
-		admin.setConfirmPassword("123");
+		admin.setConfirmPassword("123"); */
 	}
 	
 	@Test
 	public void test() {
-		System.out.println(admin.getAdminId());
-		assertEquals("Test Failed", true, adminDao.addAdmin(admin));
+		assertEquals("Test Failed", true, vendorDao.addVendor(vendor));
 	}
 	
 	@After
 	public void delete() {
-		assertEquals("Deleting Failed", true, adminDao.deleteAdmin(admin));
-	}*/
+		assertEquals("Deleting Failed", true, vendorDao.deleteVendor(vendor));
+	}
 	
 	
 /*	@Before

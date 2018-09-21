@@ -26,3 +26,7 @@ solution:In this case there is an error
 *The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).
 
 In JSP im are trying to upload file along with form data so i need to have multipartResolver bean defined in spring context from common-fileupload.jar MultipartResolver Spring
+
+
+
+*Illegal attempt to map a non collection as a @OneToMany, @ManyToMany or @CollectionOfElements: application.jconfig.model.Customer.order

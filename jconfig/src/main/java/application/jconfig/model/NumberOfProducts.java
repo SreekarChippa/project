@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import org.springframework.stereotype.Component;
 
@@ -19,6 +20,9 @@ public class NumberOfProducts {
 	
 	@ManyToOne
 	private Product product;
+	
+	@OneToOne
+	private CartItemId cartItemId;
 
 	public int getItemNo() {
 		return itemNo;

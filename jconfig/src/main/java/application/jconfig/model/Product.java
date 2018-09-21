@@ -11,6 +11,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
@@ -29,6 +30,9 @@ public class Product {
 	private int warranty;
 	private int price;
 	private int numOfProducts;
+	
+	@OneToOne
+	private CartItems cartItems; 
 	
 	@Transient
 	private MultipartFile image;

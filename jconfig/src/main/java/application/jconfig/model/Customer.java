@@ -1,5 +1,6 @@
 package application.jconfig.model;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -9,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -48,8 +50,30 @@ public class Customer {
 	
 	private final String role="customer";
 	
+	@OneToOne
+	private Cart cart;
+	
 	@OneToMany(mappedBy="customer",cascade=CascadeType.ALL)
 	private Set<CustomerAddress> customerAddress;
+
+	@OneToMany
+	private List<Order> orders;
+	
+	public Cart getCart() {
+		return cart;
+	}
+
+	public void setCart(Cart cart) {
+		this.cart = cart;
+	}
+
+	public List<Order> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(List<Order> orders) {
+		this.orders = orders;
+	}
 
 	public int getCustomerId() {
 		return customerId;
@@ -123,7 +147,7 @@ public class Customer {
 	public String toString() {
 		return "Customer [customerId=" + customerId + ", name=" + name + ", email=" + email + ", mobile=" + mobile
 				+ ", password=" + password + ", confirmPassword=" + confirmPassword + ", status=" + status + ", role="
-				+ role + ", customerAddress=" + customerAddress + "]";
+				+ role + ", cart=" + cart + ", customerAddress=" + customerAddress + ", orders=" + orders + "]";
 	}
 	
 	
