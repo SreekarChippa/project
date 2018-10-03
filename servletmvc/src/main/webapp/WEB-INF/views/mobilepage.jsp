@@ -3,6 +3,9 @@
 
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="springform" %>    
 
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@include file="contextpath.jsp" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,7 +14,7 @@
 </head>
 <body>
 
-<springform:form action="mobileprocess" method="post" modelAttribute="mobile" enctype="multipart/form-data">
+<springform:form action="${contextPath}/vendor/mobileprocess" method="post" modelAttribute="mobile" enctype="multipart/form-data">
 
 <div class="bg">
 	<div class="container-fluid bg">

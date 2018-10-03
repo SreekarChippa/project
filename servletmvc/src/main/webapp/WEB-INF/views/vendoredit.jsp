@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1"%>
     
     <%@taglib uri="http://www.springframework.org/tags/form" prefix="springform" %>
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -10,11 +11,11 @@
 </head>
 <body>
 <h1>Edit Profile</h1>
-<springform:form action="vendorupdateprocess" method="post" modelAttribute="vendor">
+<springform:form action="vendor/vendorupdateprocess" method="post" modelAttribute="vendor">
 
 <table>
 	<tr>
-		<td>Id</td>
+		<td>Id:</td>
 		<td><springform:input path="vendorId" type="hidden"/> </td>
 	</tr>
 	

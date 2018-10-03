@@ -20,9 +20,7 @@ public class Order {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int orderId;
 	private String status;
-	
-	@OneToMany
-	private List<NumberOfProducts> numberOfProducts;
+	private int numOfProducts;
 	
 	@ManyToOne
 	private Customer customer;
@@ -30,12 +28,14 @@ public class Order {
 	@OneToMany(mappedBy="order",cascade=CascadeType.ALL)
 	private List<OrderedItems> orderedItems;
 	
+	
 	public List<OrderedItems> getOrderedItems() {
 		return orderedItems;
 	}
 	public void setOrderedItems(List<OrderedItems> orderedItems) {
 		this.orderedItems = orderedItems;
 	}
+	
 	public int getOrderId() {
 		return orderId;
 	}
@@ -55,16 +55,17 @@ public class Order {
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
-	public List<NumberOfProducts> getNumberOfProducts() {
-		return numberOfProducts;
+	
+	public int getNumOfProducts() {
+		return numOfProducts;
 	}
-	public void setNumberOfProducts(List<NumberOfProducts> numberOfProducts) {
-		this.numberOfProducts = numberOfProducts;
+	public void setNumOfProducts(int numOfProducts) {
+		this.numOfProducts = numOfProducts;
 	}
 	@Override
 	public String toString() {
-		return "Order [orderId=" + orderId + ", status=" + status + ", numberOfProducts=" + numberOfProducts
-				+ ", customer=" + customer + ", orderedItems=" + orderedItems + "]";
+		return "Order [orderId=" + orderId + ", status=" + status + ", numOfProducts=" + numOfProducts + ", customer="
+				+ customer + ", orderedItems=" + orderedItems + "]";
 	}
 	
 

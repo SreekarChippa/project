@@ -50,6 +50,7 @@ public class Vendor {
 	@Transient
 	private String confirmPassword;
 	
+	@Column(nullable=false)
 	private boolean status;
 	
 	private final String role="vendor";

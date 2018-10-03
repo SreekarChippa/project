@@ -1,6 +1,7 @@
 package application.servletmvc;
 
 import java.lang.ProcessBuilder.Redirect;
+import java.security.Principal;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -80,179 +81,34 @@ public class IndexController {
 		return "adminlogin";
 	}
 	
-	/*@PostMapping("adminloginprocess")
-	public  String  adminlogin(HttpServletRequest request,HttpSession session)
-	{
-	   if((adminDao.login(request.getParameter("email"),request.getParameter("password")))!=null) {
-		   System.out.println(request.getParameter("email"));
-		   Admin admin=adminDao.login(request.getParameter("email"),request.getParameter("password"));
-		   
-		   session.setAttribute("adminDetails",admin);
-		   
-		    return "adminpage";
-	   }
-	   else {	   
-		   return "adminlogin";
-	   }
-	}*/
-	
-	@GetMapping(value= {"vendorsignup"})
-	public String signupVendor(Model model)
-	{
-		model.addAttribute("vendor", new Vendor());
-		
-		return "vendorsignup";
+	@GetMapping("/admin/adminpage")
+	public ModelAndView openAdminPage() {
+		ModelAndView modelAndView = new ModelAndView("adminpage");
+		return modelAndView;
 	}
 	
-	@PostMapping("vendorregisterprocess")
-	public String singupVendorProcess(@ModelAttribute("vendor")Vendor vendor) {
-	
-		if((vendorDao.getVendorByEmail(vendor.getEmail()))!=null) {
-		
-			 return "vendorsignup";
-		}
-		else {
-			vendorDao.registerVendor(vendor);
-			return "index";
-		}
+	@GetMapping("admin/vendordetails")
+	public String getVendorDetails(Map<String, Object> vendors) {
+		vendors.put("vendorList", vendorDao.getAllVendorDetails());
+		return "vendordetails";
 	}
-	
-	@GetMapping("vendorlogin")
-	public String login()
-	{
-		return "vendorlogin";
-	}
-	
-	@PostMapping("vendorloginprocess")
-	public  String  loginVendor(HttpServletRequest request,HttpSession session)
-	{
-		
-	   if((vendorDao.login(request.getParameter("email"),request.getParameter("password")))!=null) {
-		   
-		   Vendor vendor=vendorDao.login(request.getParameter("email"),request.getParameter("password"));
-		   
-		   session.setAttribute("vendorDetails",vendor);
-		   
-		    return "vendorpage";
-	   }
-	   else {	   
-		   return "vendorlogin";
-	   }
-	}
-	
-	
-	@GetMapping(value= {"customersignup"})
-	public String signupCustomer(Model model)
-	{
-		model.addAttribute("customer", new Customer());
-		
-		return "customersignup";
-	}
-	
-	@PostMapping("customerregisterprocess")
-	public String singupCustomerProcess(@ModelAttribute("customer")Customer customer) {
-	
-		if((customerDao.getCustomerByEmail(customer.getEmail()))!=null) {
-		
-			 return "customersignup";
-		}
-		else {
-			customerDao.registerCustomer(customer);
-			return "index";
-		}
-	}
-	
-	@GetMapping("customerlogin")
-	public String loginCustomer()
-	{
-		return "customerlogin";
-	}
-	
-	@PostMapping("customerloginprocess")
-	public  String  logincustomer(HttpServletRequest request,HttpSession session)
-	{
-		
-	   if((customerDao.loginCustomer(request.getParameter("email"),request.getParameter("password")))!=null) {
-		   
-		   Customer customer=customerDao.loginCustomer(request.getParameter("email"),request.getParameter("password"));
-		   
-		   session.setAttribute("customerDetails",customer);
-		   
-		    return "customerpage";
-		 
-	   }
-	   else {
-		   
-		   return "customerlogin";
-	   }
-	}
-	
-	@GetMapping("categories")
-	public String getCategories(Map<String, Object> categories) {
-		categories.put("categoryList", categoryDao.getCategories());
-		return "categories";
-	}
-	
-	@GetMapping("vendorprofile")
-	public String getVendorDetails() {
-		return "vendorprofile";
-	}
-	
-	@GetMapping(value= {"editvendor"})
-	public String updateVendor(HttpSession httpSession,Model model)
-	{
-		model.addAttribute("vendor", httpSession.getAttribute("vendorDetails"));
-		return "vendoredit";
-	}
-	
-	@PostMapping("vendorupdateprocess")
-	public String vendorUpdateProcess(@ModelAttribute("vendor")Vendor vendor,HttpSession session) {
 
-		    session.setAttribute("vendorDetails", vendor);
-			vendorDao.updateVendor(vendor);
-		    return  "vendorpage";
-			 
-	}
-	
-	@GetMapping("customerprofile")
-	public String getCustomerDetails() {
-		return "customerprofile";
-	}
-	
-	@GetMapping(value= {"editcustomer"})
-	public String updateCustomer(HttpSession httpSession,Model model)
-	{
-		model.addAttribute("customer", httpSession.getAttribute("customerDetails"));
-		return "redirect:/customeredit";
-	}
-	
-	@PostMapping("customerupdateprocess")
-	public String customerUpdateProcess(@ModelAttribute("customer")Customer customer,HttpSession session) {
-
-		    session.setAttribute("customerDetails", customer);
-			customerDao.updateCustomer(customer);
-		    return  "customerpage"; 
-	}
-	
-	
-	@GetMapping("accept/{userId}")
-	public String acceptUser(@PathVariable("userId")int userId) {
+	@GetMapping("admin/accept/{vendorId}")
+	public String acceptVendor(@PathVariable("vendorId")int vendorId) {
 		
-		User user=userDao.getUserById(userId);
-		user.setStatus(true);
-		userDao.updateUser(user);
-		return "redirect:/userdetails";
-		
+		Vendor vendor=vendorDao.getVendorById(vendorId);
+		vendor.setStatus(true);
+		vendorDao.updateVendor(vendor);
+		return "redirect:/admin/vendordetails";
 	}
 	
-	@GetMapping("reject/{userId}")
-	public String rejectUser(@PathVariable("userId")int userId) {
+	@GetMapping("admin/reject/{vendorId}")
+	public String rejectVendor(@PathVariable("vendorId")int vendorId) {
 		
-		User user=userDao.getUserById(userId);
-		user.setStatus(false);
-		userDao.updateUser(user);
-		return "redirect:/userdetails";
-		
+		Vendor vendor=vendorDao.getVendorById(vendorId);
+		vendor.setStatus(false);
+		vendorDao.updateVendor(vendor);
+		return "redirect:/admin/vendordetails";
 	}
 	
 	

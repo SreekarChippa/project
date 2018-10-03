@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" isELIgnored="false"%>
+    
+<%@include file="contextpath.jsp" %>  
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
  <head>
@@ -36,7 +39,7 @@
                   <a class="nav-link text-white" href="edit">Edit Profile</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link text-white" href="">Logout</a>
+                  <a class="nav-link text-white" href="${contextPath}/customerlogin">Logout</a>
                 </li>
 			</ul>
   		</div>

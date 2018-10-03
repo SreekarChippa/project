@@ -1,4 +1,4 @@
-package application.jconfig.model;
+package application.jconfig;
 
 import java.util.Properties;
 
@@ -20,7 +20,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 @ComponentScan("application.jconfig")
 public class HibernateConfiguration {
-	@Bean
+	@Bean("dataSource")
 	public DataSource getDataSource(){
 		BasicDataSource dataSource=new BasicDataSource();
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");

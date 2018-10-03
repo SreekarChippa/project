@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -63,19 +64,19 @@ public class ProductController {
 	@Autowired
 	private ImageUpload imageUpload;
 	
-	@PostMapping("subcategory")
+	@PostMapping("/vendor/subcategory")
 	public String getSubCategory(@RequestParam("category")int categoryId,Model model) {
 		model.addAttribute("subCategoryList", subCategoryDao.getsubCategories(categoryId));
 		model.addAttribute("categoryName", categoryDao.getCategoryById(categoryId));
 		return "subcategory";
 	}
 	
-	@PostMapping("getmodel")
-	public String addProducts(HttpServletRequest httpServletRequest,Model model,HttpSession session) {
+	@PostMapping("vendor/getmodel")
+	public String addProducts(HttpServletRequest httpServletRequest,Model model,HttpSession session,Principal principal) {
 		
 		SubCategory subCategory=subCategoryDao.getSubCategory(Integer.parseInt(httpServletRequest.getParameter("subCategoryId")));
 		model.addAttribute("subCategoryId", subCategory.getSubCategoryId());
-		Vendor vendor=(Vendor)session.getAttribute("vendorDetails");
+		Vendor vendor=vendorDao.getVendorByEmail(principal.getName());
 		model.addAttribute("vendorId", vendor.getVendorId());
 		
 		switch (subCategory.getSubCategoryName()) {
@@ -117,7 +118,7 @@ public class ProductController {
 		
 	}
 	
-	@PostMapping("mobileprocess")
+	@PostMapping("vendor/mobileprocess")
 	public String addMobileProcess(@ModelAttribute("mobile")Mobile mobile,HttpSession httpSession,HttpServletRequest request) {
 		List<NumberOfProducts> numberOfProducts=listOfProducts(mobile);
 		mobile.setNumberOfProducts(numberOfProducts);
@@ -145,7 +146,7 @@ public class ProductController {
 		return numberOfProductsList;
 	}
 	
-	@GetMapping("productdetails")
+	@GetMapping("vendor/productdetails")
 	public String getProducts(HttpSession session,Model model,Map<String, Object> products) {
 		Vendor vendor=(Vendor)session.getAttribute("vendorDetails");
 		products.put("productList", productDao.getAllProducts(vendor.getVendorId()));
@@ -205,8 +206,9 @@ public class ProductController {
 	}
 	
 	@GetMapping("products/{subCategoryId}")
-	public String getProducts(@PathVariable("subCategoryId")int subCategoryId,Map<String,Object> products) {
+	public String getProducts(@PathVariable("subCategoryId")int subCategoryId,Map<String,Object> products,HttpSession session) {
 		
+		session.setAttribute("electronics", subCategoryDao.getElectronics());
 		products.put("productList",productDao.getAllProducts(subCategoryId));
 		return "product";
 	}

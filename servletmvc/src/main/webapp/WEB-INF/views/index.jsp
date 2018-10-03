@@ -1,6 +1,6 @@
 <%@page isELIgnored="false"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <spring:url value="/resources/images" var="images">
 </spring:url>
@@ -65,8 +65,8 @@
 		<button type="button" class="btn btn-dark dropdown-toggle"
 			data-toggle="dropdown">Customer</button>
 		<div class="dropdown-menu">
-			<a class="dropdown-item" href="customersignup">Sign Up</a> <a
-				class="dropdown-item" href="customerlogin">Login</a>
+			<a class="dropdown-item" href="customersignup">Sign Up</a>                                                
+			<a	class="dropdown-item" href="customerlogin">Login</a>
 		</div>
 	</div>
 	</nav>

@@ -32,7 +32,6 @@ import application.jconfig.model.Address;
 import application.jconfig.model.Admin;
 import application.jconfig.model.Category;
 import application.jconfig.model.Customer;
-import application.jconfig.model.HibernateConfiguration;
 import application.jconfig.model.Product;
 import application.jconfig.model.SubCategory;
 import application.jconfig.model.User;
