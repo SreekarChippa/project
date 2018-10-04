@@ -54,19 +54,19 @@ public class CustomerController {
 	
 	
 	
-	@GetMapping("customerprofile")
+	@GetMapping("customer/customerprofile")
 	public String getCustomerDetails() {
 		return "customerprofile";
 	}
 	
-	@GetMapping(value= {"editcustomer"})
+	@GetMapping(value= {"customer/editcustomer"})
 	public String updateCustomer(HttpSession httpSession,Model model)
 	{
 		model.addAttribute("customer", httpSession.getAttribute("customerDetails"));
 		return "redirect:/customeredit";
 	}
 	
-	@PostMapping("customerupdateprocess")
+	@PostMapping("customer/customerupdateprocess")
 	public String customerUpdateProcess(@ModelAttribute("customer")Customer customer,HttpSession session) {
 
 		    session.setAttribute("customerDetails", customer);

@@ -17,11 +17,13 @@
 </head>
 <body>
 
+<%@include file="back.jsp" %>
+
 	<section class="container-fluid bg">
 		<section class="row justify-content-center">
 			<section class="col-12 col-sm-6 col-md-3">
 				<form class="form-container" action="customer/customerloginprocess" method="post" >
-					<h2>Login</h2>
+					<h4>Welcome To Customer Login Page!</h4>
 					<div class="form-group">
 						<label for="email">Email</label> <input type="email"
 							class="form-control" id="email"  name="email" placeholder="Enter email">

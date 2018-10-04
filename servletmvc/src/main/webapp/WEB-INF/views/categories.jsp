@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" isELIgnored="false"%>
-    
+<%@ include file="contextpath.jsp" %>    
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -18,15 +18,14 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+<nav class="navbar navbar-expand-sm bg-light navbar-light">
   <ul class="navbar-nav">
-   
     <li class="nav-item">
-      <a class="nav-link" href="vendorpage">Vendor page</a>
+      <a class="nav-link text-primary" href="${contextPath}/vendor/vendorpage">Back to Vendor Page</a>
     </li>
-  
   </ul>
 </nav>
+<br>
 
 <form action="subcategory" method="post">
 	<div class="form-group">

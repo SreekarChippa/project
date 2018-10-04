@@ -19,72 +19,40 @@
 </head>
 <body>
 
-<div class="bg">
-	<div class="container-fluid bg">
-		<div class="row">
-			<springform:form action="customerregisterprocess" method="POST" modelAttribute="customer">
-				
-				<div class="form-group">
-					<label for="name">Name:</label>
-      				<springform:input path="name" class="form-control" id="name"/>
-      				<springform:errors path="name" ></springform:errors>
-				</div>
-				
-				<div class="form-group">
-					<label for="email">Email:</label>
-      				<springform:input path="email" class="form-control" id="email"/>
-      				<springform:errors path="email" ></springform:errors>
-				</div>		
-				
-				<div class="form-group">
-					<label for="mobile">Mobile:</label>
-      				<springform:input path="mobile" class="form-control" id="mobile"/>
-      				<springform:errors path="mobile" ></springform:errors>
-				</div>
-				
-				<div class="form-group">
-				<!-- 	<input type="password" id="inputPassword" class="form-control" > -->
-					<label for="password">Password:</label>
-      				<springform:input type="password" path="password" class="form-control" id="password"/>
-				</div>
-				
-				<div class="form-group">
-					<label for="confirmPassword">Confirm Password:</label>
-      				<springform:input type="password" path="confirmPassword" class="form-control" id="confirmPassword"/>
-				</div>
-				
-				<div class="form-group form-check">
-					<label class="form-check-label">
-						<input class="form-check-input" type="checkbox">Remember Me</label>
-				</div>
-				
-				<button type="submit" class="btn btn-primary btn-block">Sign Up</button>
-				
-				</springform:form>
-				
-		</div>
-	
-	</div>
+<%@include file="back.jsp" %>
 
-</div>
+	<section class="container-fluid bg">
+		<section class="row justify-content-center">
+			<section class="col-12 col-sm-6 col-md-3">
+				<form class="form-container" action="customerregisterprocess" method="post" modelAttribute="customer">
+					<h3>Welcome To Customer Signup Page!</h3>
+					<div class="form-group">
+						<label for="name">Name</label> <input type="name"
+							class="form-control" id="name"  name="name" placeholder="Enter name">
+					</div>
+					<div class="form-group">
+						<label for="email">Email</label> <input type="email"
+							class="form-control" id="email"  name="email" placeholder="Enter email">
+					</div>
+					<div class="form-group">
+						<label for="mobile">Mobile</label> <input type="mobile"
+							class="form-control" id="mobile"  name="mobile" placeholder="Enter mobile">
+					</div>
+					
+					<div class="form-group">
+						<label for="password">Password</label> 
+						<input type="password" class="form-control" id="password"  name="password" placeholder="Enter Password">
+					</div>
+					<div class="form-group">
+						<label for="confirmPassword">Confirm Password</label> 
+						<input type="password" class="form-control" id="confirmPassword"  name="confirmPassword" placeholder="Confirm Password">
+					</div>
 
+					<button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+				</form>
+			</section>
+		</section>
+	</section>
 
 </body>
 </html> 
-
-<style> 
-.bg{
-	background-image:url("https://ak5.picdn.net/shutterstock/videos/15366295/thumb/4.jpg");
-	width: 100%;
-	height: 100%;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
-} 
-form{
-	padding-left:500px;
-	padding-bottom: 110px;
-
-}
-</style>
-

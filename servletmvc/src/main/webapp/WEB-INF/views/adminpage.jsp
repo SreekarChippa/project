@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-
+<%@include file="contextpath.jsp" %>
 
  
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -30,7 +30,7 @@
             <div class="collapse navbar-collapse  justify-content-end" id="collapsibleNavbar">
               <ul class="navbar-nav">
                 <li class="nav-item">
-                  <a class="nav-link text-white" href="#">Home</a>
+                  <a class="nav-link text-white" href="${contextPath}/">Home</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link text-white" href="profile">Profile</a>
@@ -42,22 +42,11 @@
                     <a class="nav-link text-white" href="vendordetails">Vendor's</a>
                   </li>
 
-                 <!-- Dropdown -->
-    <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-          Categories
-        </a>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="#">Link 1</a>
-          <a class="dropdown-item" href="#">Link 2</a>
-          <a class="dropdown-item" href="#">Link 3</a>
-        </div>
-      </li>
               </ul>
             </div>
           </nav>  
-       
-    
+       <br>
+    <h1>Welcome To Admin Page!</h1>
            
     </body>
  

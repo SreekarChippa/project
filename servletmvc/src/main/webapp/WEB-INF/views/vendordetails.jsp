@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
  <%@page isELIgnored="false" %>
- <%@include file="contextpath.jsp" %>
+
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="spring" %>
 <%@taglib uri="http://www.springframework.org/tags"  prefix="springtag"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ include file="contextpath.jsp" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -19,6 +20,15 @@
 
 </head>
 <body>
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link text-danger" href="${contextPath}/admin/adminpage">Back</a>
+    </li>
+  </ul>
+</nav>
+<br>
 
 <h1>Deactive Stage</h1>
       

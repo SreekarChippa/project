@@ -155,7 +155,7 @@ public class ProductController {
 		
 	}
 	
-	@GetMapping("viewproductspecifications/{productId}")
+	@GetMapping("vendor/viewproductspecifications/{productId}")
 	public String viewProducts(@PathVariable("productId")int productId,Model model) {
 		String name=subCategoryDao.getSubCategory(productDao.getSubCategoryId(productId)).getSubCategoryName();
 		System.out.println(name);
@@ -174,7 +174,7 @@ public class ProductController {
 		}
 	}
 	
-	@GetMapping("editproductspecifications/{productId}")
+	@GetMapping("vendor/editproductspecifications/{productId}")
 	public String editProducts(@PathVariable("productId")int productId,Model model) {
 		String name=subCategoryDao.getSubCategory(productDao.getSubCategoryId(productId)).getSubCategoryName();
 		

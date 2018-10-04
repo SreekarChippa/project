@@ -28,7 +28,7 @@
             <div class="collapse navbar-collapse  justify-content-end" id="collapsibleNavbar">
               <ul class="navbar-nav">
                 <li class="nav-item">
-                  <a class="nav-link text-white" href="home">Home</a>
+                  <a class="nav-link text-white" href="${contextPath}/">Home</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link text-white" href="vendorprofile">Profile</a>

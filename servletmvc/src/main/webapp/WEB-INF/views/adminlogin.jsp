@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ include file="contextpath.jsp" %>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -21,11 +22,13 @@
 </head>
 <body>
 
+<%@include file="back.jsp" %>
+
 	<section class="container-fluid bg">
 		<section class="row justify-content-center">
 			<section class="col-12 col-sm-6 col-md-3">
 				<form class="form-container" action="admin/adminloginprocess" method="post" >
-					<h2>Login</h2>
+					<h2>Welcome To Admin Login Page!</h2>
 					<div class="form-group">
 						<label for="email">Email</label> <input type="email"
 							class="form-control" id="email"  name="email" placeholder="Enter email">
