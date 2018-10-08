@@ -48,8 +48,8 @@
 		<button type="button" class="btn btn-dark dropdown-toggle"
 			data-toggle="dropdown">Vendor</button>
 		<div class="dropdown-menu">
-			<a class="dropdown-item" href="vendorsignup">Sign Up</a> <a
-				class="dropdown-item" href="vendorlogin">Login</a>
+			<a class="dropdown-item" href="vendorsignup">Sign Up</a>     
+			<a class="dropdown-item" href="vendorlogin">Login</a>
 		</div>
 	</div>
 
@@ -61,8 +61,8 @@
 			<a	class="dropdown-item" href="customerlogin">Login</a>
 		</div>
 	</div>
-	</nav>
-
+	</nav> 
+<br>
 	<nav
 		class="navbar navbar-expand-sm bg-light navbar-light justify-content-center">
 	<form class="form-inline" action="/action_page.php">
@@ -117,10 +117,10 @@
 			</div></li>
 	</ul>
 	</nav>
+<br>
+<%@include file="carousel.jsp" %> 
 
-<%@include file="carousel.jsp" %>
-
-
+<%@include file="footer.jsp" %>	
 
 </body>
 </html>

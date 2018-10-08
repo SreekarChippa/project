@@ -1,4 +1,4 @@
-package application.jconfig.model;
+/*package application.jconfig.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -72,3 +72,4 @@ public class OrderedItems {
 
 	
 }
+*/

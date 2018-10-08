@@ -58,9 +58,10 @@ public class VendorController {
 	}
 	
 	@GetMapping("/vendor/vendorpage")
-	public ModelAndView openVendorPage(HttpSession session) {
+	public ModelAndView openVendorPage(HttpSession session,Principal principal) {
+		Vendor vendor=vendorDao.getVendorByEmail(principal.getName());
 		ModelAndView view=new ModelAndView("vendorpage");
-		session.setAttribute("electronics", subCategoryDao.getElectronics());
+		session.setAttribute("vendorDetails", vendor);
 		return view;
 	}
 	
@@ -71,15 +72,15 @@ public class VendorController {
 	}
 	
 	@GetMapping("vendor/vendorprofile")
-	public String getVendorDetails() {
+	public String getVendorAllDetails() {
 		return "vendorprofile";
 	}
 	
 	@GetMapping(value= {"vendor/editvendor"})
-	public String updateVendor(Principal principal,Model model,Vendor vendor)
+	public String updateVendor(Model model,HttpSession session)
 	{
-		Vendor vendorDetails=vendorDao.getVendorByEmail(principal.getName());
-		model.addAttribute("vendorDetails", vendor);
+		
+		model.addAttribute("vendor",session.getAttribute("vendorDetails"));
 		return "vendoredit";
 	}
 	

@@ -1,4 +1,5 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="spring"%>
+<%@include file="contextpath.jsp" %>
 <html>
 <head>
 <title>Add mobile Page</title>
@@ -18,7 +19,7 @@
 	<section class="container-fluid bg">
 		<section class="row justify-content-center">
 			<section class="col-12 col-sm-6 col-md-3">
-				<spring:form class="form-container" action="editmobileprocess"
+				<spring:form class="form-container" action="${contextPath}/vendor/editmobileprocess"
 					method="post" modelAttribute="mobile" enctype="multipart/form-data">
 					<h2>Edit  Mobile</h2>
 					<div class="form-group">
@@ -37,8 +38,7 @@
 					<div class="form-group">
 						<spring:label path="productId">Product Id</spring:label>
 						<spring:input class="form-control" path="productId"
-							type="hidden" value="${productId }"
-							 />
+							type="hidden" value="${productId }" />
 					</div>
 					<div class="form-group">
 						<spring:label path="brand">Product Brand</spring:label>

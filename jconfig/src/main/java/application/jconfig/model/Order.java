@@ -1,4 +1,4 @@
-package application.jconfig.model;
+/*package application.jconfig.model;
 
 import java.util.List;
 
@@ -70,4 +70,4 @@ public class Order {
 	
 
 	
-}
+}*/

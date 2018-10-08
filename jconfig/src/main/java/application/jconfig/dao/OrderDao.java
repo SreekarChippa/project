@@ -1,4 +1,4 @@
-package application.jconfig.dao;
+/*package application.jconfig.dao;
 
 import application.jconfig.model.Order;
 
@@ -8,3 +8,4 @@ public interface OrderDao {
 	public boolean updateOrder(Order order);
 
 }
+*/

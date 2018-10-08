@@ -196,7 +196,7 @@ public class ProductController {
 		}
 	}
 	
-	@PostMapping("editmobileprocess")
+	@PostMapping("vendor/editmobileprocess")
 	public String editMobileProductDetails(@ModelAttribute("mobile") Mobile mobile,HttpServletRequest request) {
 		if(!mobile.getImage().isEmpty()) {
 			imageUpload.uploadImage(mobile, request);
@@ -209,8 +209,22 @@ public class ProductController {
 	public String getProducts(@PathVariable("subCategoryId")int subCategoryId,Map<String,Object> products,HttpSession session) {
 		
 		session.setAttribute("electronics", subCategoryDao.getElectronics());
-		products.put("productList",productDao.getAllProducts(subCategoryId));
+		products.put("productList",productDao.getProducts(subCategoryId));
 		return "product";
+	}
+	
+	@GetMapping("vendorproducts/{subCategoryId}")
+	public String getVendorProducts(@PathVariable("subCategoryId")int subCategoryId,Map<String,Object> products,Principal principal) {
+		
+		products.put("productList",productDao.getProducts(subCategoryId));
+		return "vendorproduct";
+	}
+	
+	@GetMapping("customerproducts/{subCategoryId}")
+	public String getcustomerProducts(@PathVariable("subCategoryId")int subCategoryId,Map<String,Object> products,HttpSession session) {
+		
+		products.put("productList",productDao.getProducts(subCategoryId));
+		return "customerproduct";
 	}
 	
 }

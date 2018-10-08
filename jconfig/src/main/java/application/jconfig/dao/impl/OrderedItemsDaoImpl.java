@@ -1,4 +1,4 @@
-package application.jconfig.dao.impl;
+/*package application.jconfig.dao.impl;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,4 +48,4 @@ public class OrderedItemsDaoImpl implements OrderedItemsDao{
 		}
 	}
 
-}
+}*/

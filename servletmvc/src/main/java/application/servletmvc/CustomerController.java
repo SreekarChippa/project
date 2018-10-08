@@ -1,5 +1,7 @@
 package application.servletmvc;
 
+import java.security.Principal;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import application.jconfig.dao.CustomerDao;
+import application.jconfig.dao.SubCategoryDao;
 import application.jconfig.model.Customer;
 
 @Controller
@@ -18,6 +21,9 @@ public class CustomerController {
 	
 	@Autowired
 	private CustomerDao customerDao;
+	
+	@Autowired
+	private SubCategoryDao subCategoryDao;
 	
 	@GetMapping(value= {"customersignup"})
 	public String signupCustomer(Model model)
@@ -47,8 +53,11 @@ public class CustomerController {
 	}
 	
 	@GetMapping("/customer/customerpage")
-	public ModelAndView openCustomerPage() {
+	public ModelAndView openCustomerPage(Principal principal,HttpSession session) {
+		Customer customer =customerDao.getCustomerByEmail(principal.getName());
 		ModelAndView view=new ModelAndView("customerpage");
+		session.setAttribute("customerDetails", customer);
+		session.setAttribute("electronics",subCategoryDao.getElectronics());
 		return view;
 	}
 	
@@ -60,9 +69,10 @@ public class CustomerController {
 	}
 	
 	@GetMapping(value= {"customer/editcustomer"})
-	public String updateCustomer(HttpSession httpSession,Model model)
+	public String updateCustomer(Model model,Customer customer,HttpSession session)
 	{
-		model.addAttribute("customer", httpSession.getAttribute("customerDetails"));
+		
+		model.addAttribute("customer", session.getAttribute("customerDetails"));
 		return "redirect:/customeredit";
 	}
 	

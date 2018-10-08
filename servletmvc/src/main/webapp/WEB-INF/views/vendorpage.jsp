@@ -37,8 +37,6 @@
                   <a class="nav-link text-white" href="editvendor">Edit Profile</a>
                 </li>
                 
-               
-
                  <!-- Dropdown -->
     <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
@@ -46,7 +44,7 @@
         </a>
         <div class="dropdown-menu">
           <a class="dropdown-item" href="categories">Add products</a>
-          <a class="dropdown-item" href="productdetails">View products</a>
+          <a class="dropdown-item" href="${contextPath}/vendor/productdetails">View products</a>
         </div>
       </li>
       
@@ -57,6 +55,8 @@
 	</ul>
   </div>
 </nav>  
+
+
 
 <nav class="navbar navbar-expand-sm bg-light navbar-light justify-content-center">
   <form class="form-inline" action="/action_page.php">
@@ -74,7 +74,7 @@
       </a>
       <div class="dropdown-menu">
       <c:forEach  items="${electronics}" var="electronic">
-					<a class="dropdown-item" href="products/${electronic.subCategoryId}">${electronic.subCategoryName}</a> 
+					<a class="dropdown-item" href="${contextPath}/vendorproducts/${electronic.subCategoryId}">${electronic.subCategoryName}</a> 
 	  </c:forEach>
         <!-- <a class="dropdown-item" href="#">Mobile</a>
         <a class="dropdown-item" href="#">Laptop</a>
@@ -123,7 +123,12 @@
     </li>
   </ul>
 </nav>
-       
+    
+    <br>
+    
+    <%@include file="carousel.jsp" %> 
+
+<%@include file="footer.jsp" %>	   
     
            
     </body>

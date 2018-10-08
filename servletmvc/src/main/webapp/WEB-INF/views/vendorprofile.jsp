@@ -30,7 +30,7 @@
 
 			<tr>
 				<td>Name:</td>
-				<td>${vendorDetails.name}</td>
+				<td>${vendor.name}</td>
 			</tr>
 			<tr>
 				<td>Email:</td>

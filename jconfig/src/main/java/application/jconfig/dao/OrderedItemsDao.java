@@ -1,4 +1,4 @@
-package application.jconfig.dao;
+/*package application.jconfig.dao;
 
 import application.jconfig.model.OrderedItems;
 
@@ -7,3 +7,4 @@ public interface OrderedItemsDao {
 	public boolean deleteOrderedItems(OrderedItems orderedItems);
 	public boolean updateOrderedItems(OrderedItems orderedItems);
 }
+*/

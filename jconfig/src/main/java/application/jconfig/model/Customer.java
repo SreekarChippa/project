@@ -55,9 +55,6 @@ public class Customer {
 	
 	@OneToMany(mappedBy="customer",cascade=CascadeType.ALL)
 	private Set<CustomerAddress> customerAddress;
-
-	@OneToMany
-	private List<Order> orders;
 	
 	public Cart getCart() {
 		return cart;
@@ -65,14 +62,6 @@ public class Customer {
 
 	public void setCart(Cart cart) {
 		this.cart = cart;
-	}
-
-	public List<Order> getOrders() {
-		return orders;
-	}
-
-	public void setOrders(List<Order> orders) {
-		this.orders = orders;
 	}
 
 	public int getCustomerId() {
@@ -147,7 +136,7 @@ public class Customer {
 	public String toString() {
 		return "Customer [customerId=" + customerId + ", name=" + name + ", email=" + email + ", mobile=" + mobile
 				+ ", password=" + password + ", confirmPassword=" + confirmPassword + ", status=" + status + ", role="
-				+ role + ", cart=" + cart + ", customerAddress=" + customerAddress + ", orders=" + orders + "]";
+				+ role + ", cart=" + cart + ", customerAddress=" + customerAddress + "]";
 	}
 	
 	
