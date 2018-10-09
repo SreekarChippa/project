@@ -7,4 +7,5 @@ public interface AdminDao {
 	public boolean deleteAdmin(Admin admin);
 	public boolean updateAdmin(Admin admin);
 	public Admin login(String email,String password);
+	public Admin getAdminByEmail(String email);
 }

@@ -20,7 +20,33 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </head>
 <body>
-<p>vendor</p>
+
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+            <!-- Brand -->
+            <a class="navbar-brand  text-default" href="${contextPath}/vendor/vendorpage">Back</a>
+          
+            <!-- Toggler/collapsibe Button -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+        <%--   <!-- Navbar links -->
+            <div class="collapse navbar-collapse  justify-content-end" id="collapsibleNavbar">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link text-white" href="${contextPath}/">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-white" href="customerprofile">Profile</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-white" href="editcustomer">Edit Profile</a>
+                </li>  --%>
+
+	</ul>
+  </div>
+</nav> 
+
 	<div class="container" style="margin-top: 30px">
 		<div class="row">
 
@@ -31,7 +57,7 @@
 						src="<spring:url value="/resources/images/products/${product.productId}.jpg"></spring:url>"
 						alt="Card image cap">
 					<div class="card-body">
-						<h5 class="card-title">${product.brand }</h5>
+						<h5 class="card-title">${product.brand} ${product.model}</h5>
 						<h5 class="card-title">${product.price }</h5>
 						<a
 							href="${contextPath}/vendor/viewproductspecifications/${product.productId}"><button

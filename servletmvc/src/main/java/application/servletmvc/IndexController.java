@@ -87,6 +87,12 @@ public class IndexController {
 		return modelAndView;
 	}
 	
+	@GetMapping("/admin/adminprofile")
+	public String getAdminDetails() {
+		return "adminprofile";
+		
+	}
+	
 	@GetMapping("admin/vendordetails")
 	public String getVendorDetails(Map<String, Object> vendors) {
 		vendors.put("vendorList", vendorDao.getAllVendorDetails());

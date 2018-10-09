@@ -11,45 +11,39 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-<title>vendor profile</title>
+<title>admin profile</title>
 </head>
 <body>
 
 <nav class="navbar navbar-expand-sm bg-light navbar-light">
   <ul class="navbar-nav">
     <li class="nav-item">
-      <a class="nav-link text-primary" href="${contextPath}/vendor/vendorpage">Back</a>
+      <a class="nav-link text-primary" href="${contextPath}/admin/adminpage">Back</a>
     </li>
   </ul>
 </nav>
 <br>
-<h3>Welcome To Vendor Profile Page!</h3>
+<h3>Welcome To Admin Profile Page!</h3>
 <br>	
 	<spring:form>
 		<table>
 
 			<tr>
 				<td>Name:</td>
-				<td>${vendorDetails.name}</td>
+				<td>${adminDetails.name}</td>
 			</tr>
 			<tr>
 				<td>Email:</td>
-				<td>${vendorDetails.mobile}</td>
+				<td>${adminDetails.mobile}</td>
 
 			</tr>
 
 			<tr>
 				<td>Mobile:</td>
-				<td>${vendorDetails.email}</td>
+				<td>${adminDetails.email}</td>
 
 			</tr>
 
-			<tr>
-				<td>Company Name:</td>
-				<td>${vendorDetails.companyName}</td>
-
-			</tr>
-			
 		</table>
 
 

@@ -54,7 +54,7 @@ public class AdminDaoImpl implements AdminDao {
 	public Admin login(String email, String password) {
 		// TODO Auto-generated method stub
 		try {
-			Query<Admin> query=sessionFactory.getCurrentSession().createQuery("from admindetails where email=:email and password=:password", Admin.class);
+			Query<Admin> query=sessionFactory.getCurrentSession().createQuery("from AdminDetails where email=:email and password=:password", Admin.class);
 			query.setParameter("email", email);
 			query.setParameter("password", password);
 			return query.getSingleResult();
@@ -62,6 +62,20 @@ public class AdminDaoImpl implements AdminDao {
 				// TODO: handle exception
 			return null;
 			}
+	}
+
+	@Override
+	public Admin getAdminByEmail(String email) {
+		// TODO Auto-generated method stub
+		try {
+			Query<Admin> query=sessionFactory.getCurrentSession().createQuery("from adminetails where email=:email", Admin.class);
+			query.setParameter("email", email);
+			return query.getSingleResult();
+		} catch (Exception e) {
+			// TODO: handle exception
+			return null;
+		}
+		
 	}
 	
 	

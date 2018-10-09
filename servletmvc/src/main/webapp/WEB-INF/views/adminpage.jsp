@@ -33,7 +33,7 @@
                   <a class="nav-link text-white" href="${contextPath}/">Home</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link text-white" href="profile">Profile</a>
+                  <a class="nav-link text-white" href="${contextPath}/admin/adminprofile">Profile</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link text-white" href="edit">Edit Profile</a>
