@@ -2,7 +2,9 @@ package application.jconfig.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,7 +22,7 @@ public class Cart {
 	private int numOfItems;
 	private int netPrice;
 	
-	@OneToMany
+	@OneToMany(mappedBy="cart",fetch=FetchType.EAGER,cascade=CascadeType.ALL)
 	private List<CartItems> cartItems;
 	
 	@OneToOne

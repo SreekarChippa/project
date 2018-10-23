@@ -41,6 +41,9 @@
                 <li class="nav-item">
                     <a class="nav-link text-white" href="vendordetails">Vendor's</a>
                   </li>
+                  <li class="nav-item">
+                    <a class="nav-link text-white" href="${contextPath}/admin/logout">Logout</a>
+                  </li>
 
               </ul>
             </div>

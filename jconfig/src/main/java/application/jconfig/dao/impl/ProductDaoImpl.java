@@ -95,6 +95,21 @@ public class ProductDaoImpl implements ProductDao {
 			return null;
 		}
 	}
+
+	@Override
+	public Product getProduct(int productId) {
+		// TODO Auto-generated method stub
+		try {
+			Query<Product> query=sessionFactory.getCurrentSession().createQuery("from Product where productId=:id", Product.class);
+			query.setParameter("id", productId);
+			return query.getSingleResult();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return null;
+		}
+		
+	}
 	
 
 }

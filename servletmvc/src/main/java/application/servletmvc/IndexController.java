@@ -76,6 +76,18 @@ public class IndexController {
 		return modelAndView;
 	}
 	
+	@GetMapping("aboutus")
+	public ModelAndView aboutUs() {
+		ModelAndView view=new ModelAndView("AboutUs");
+		return view;
+	}
+	
+	@GetMapping("contactus")
+	public ModelAndView contactUs() {
+		ModelAndView view=new ModelAndView("contact");
+		return view;
+	}
+	
 	@GetMapping("adminlogin")
 	public String adminlogin() {
 		return "adminlogin";

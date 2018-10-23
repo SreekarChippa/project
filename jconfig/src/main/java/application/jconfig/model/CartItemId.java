@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import org.springframework.stereotype.Component;
 
@@ -14,7 +15,7 @@ public class CartItemId {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int cartItemId;
 	
-	@OneToOne
+	@ManyToOne
 	private CartItems cartItems; 
 	
 	@OneToOne

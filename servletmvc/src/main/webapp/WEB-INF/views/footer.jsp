@@ -33,11 +33,8 @@
 			<div class="col-md-4 mx-auto">
 
 				<!-- Content -->
-				<h5 class="font-weight-bold text-uppercase mt-3 mb-4">Footer
-					Content</h5>
-				<p>Here you can use rows and columns here to organize your
-					footer content. Lorem ipsum dolor sit amet, consectetur adipisicing
-					elit.</p>
+				<h5 class="font-weight-bold text-uppercase mt-3 mb-4">Ecommerce</h5>
+				<p>E-Commerce is associated with the buying and selling of products and services via computer network today. Business-to-consumer (B2C) is the retail part of e-commerce on the internet. It is when businesses sell products, services or information directly to consumers.</p>
 
 			</div>
 			<!-- Grid column -->
@@ -48,13 +45,13 @@
 			<div class="col-md-2 mx-auto">
 
 				
-				<h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
+				<h5 class="font-weight-bold text-uppercase mt-3 mb-4">SALES</h5>
 
 				<ul class="list-unstyled">
-					<li><a href="#!">Link 1</a></li>
-					<li><a href="#!">Link 2</a></li>
-					<li><a href="#!">Link 3</a></li>
-					<li><a href="#!">Link 4</a></li>
+					<li><a href="#!">Electonics</a></li>
+					<li><a href="#!">Men</a></li>
+					<li><a href="#!">Women</a></li>
+					<li><a href="#!">Home Appliance</a></li>
 				</ul>
 
 			</div>
@@ -66,13 +63,13 @@
 			<div class="col-md-2 mx-auto">
 
 				
-				<h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
+				<h5 class="font-weight-bold text-uppercase mt-3 mb-4">LINKS</h5>
 
 				<ul class="list-unstyled">
-					<li><a href="#!">Link 1</a></li>
-					<li><a href="#!">Link 2</a></li>
-					<li><a href="#!">Link 3</a></li>
-					<li><a href="#!">Link 4</a></li>
+					<li><a href="">Home</a></li>
+					<li><a href="aboutus">About Us</a></li>
+					<li><a href="contactus">Contact Us</a></li>
+					<li><a href="adminlogin">ADMIN</a></li>
 				</ul>
 
 			</div>
@@ -84,13 +81,13 @@
 			<div class="col-md-2 mx-auto">
 
 				<!-- Links -->
-				<h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
+				<h5 class="font-weight-bold text-uppercase mt-3 mb-4">CONTACT</h5>
 
 				<ul class="list-unstyled">
-					<li><a href="#!">Link 1</a></li>
-					<li><a href="#!">Link 2</a></li>
-					<li><a href="#!">Link 3</a></li>
-					<li><a href="#!">Link 4</a></li>
+					<li><a href="#!">Hyderabad,India,500067</a></li>
+					<li><a href="#!">contact@ecommerce.com</a></li>
+					<li><a href="#!">+91 7032343530</a></li>
+					<li><a href="#!">040 27400699</a></li>
 				</ul>
 
 			</div>

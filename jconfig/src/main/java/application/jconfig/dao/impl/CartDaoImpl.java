@@ -1,6 +1,7 @@
 package application.jconfig.dao.impl;
 
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -60,6 +61,34 @@ public class CartDaoImpl implements CartDao {
 			// TODO: handle exception
 		}
 		return null;
+	}
+
+	@Override
+	public Cart getCart(int customerId) {
+		// TODO Auto-generated method stub
+		try {
+			return (Cart) sessionFactory.getCurrentSession().createQuery("from Cart where customer_customerId=:id")
+					.setParameter("id", customerId).getSingleResult();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return null;
+		}
+		
+	}
+
+	@Override
+	public boolean deleteCartByCustomerId(int cartId) {
+		// TODO Auto-generated method stub
+		try {
+			Query<Cart> query=sessionFactory.getCurrentSession().createNamedQuery("delete from Cart where cartId=:id", Cart.class);
+			return true;
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return false;
+		}
+		
 	}
 	
 

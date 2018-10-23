@@ -49,7 +49,7 @@
       </li>
       
       <li class="nav-item">
-                  <a class="nav-link text-white" href="${contextPath}/vendorlogin">Logout</a>
+                  <a class="nav-link text-white" href="${contextPath}/vendor/logout">Logout</a>
                 </li>
 
 	</ul>
@@ -126,7 +126,7 @@
     
     <br>
     
-    <%@include file="carousel.jsp" %> 
+<%@include file="carousel.jsp" %> 
 
 <%@include file="footer.jsp" %>	   
     

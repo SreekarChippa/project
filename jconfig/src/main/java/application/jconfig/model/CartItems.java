@@ -1,10 +1,15 @@
 package application.jconfig.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import org.springframework.stereotype.Component;
@@ -14,7 +19,7 @@ import org.springframework.stereotype.Component;
 public class CartItems {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int itemId;
+	private int cartItemsId;
 	private int unitprice;
 	private int quantity;
 	private int totalprice;
@@ -22,18 +27,15 @@ public class CartItems {
 	@ManyToOne
 	private Cart cart;
 	
-	@OneToOne
-	private Product product;
-	
-	@OneToOne
-	private CartItemId cartItemId;
+	@OneToMany(mappedBy="cartItems",fetch=FetchType.EAGER,cascade=CascadeType.ALL)
+	private List<CartItemId> cartItemIds;
 
-	public int getItemId() {
-		return itemId;
+	public int getCartItemId() {
+		return cartItemsId;
 	}
 
-	public void setItemId(int itemId) {
-		this.itemId = itemId;
+	public void setCartItemId(int cartItemId) {
+		this.cartItemsId = cartItemId;
 	}
 
 	public int getUnitprice() {
@@ -68,27 +70,14 @@ public class CartItems {
 		this.cart = cart;
 	}
 
-	public Product getProduct() {
-		return product;
+	public List<CartItemId> getCartItemIds() {
+		return cartItemIds;
 	}
 
-	public void setProduct(Product product) {
-		this.product = product;
+	public void setCartItemIds(List<CartItemId> cartItemIds) {
+		this.cartItemIds = cartItemIds;
 	}
 
-	public CartItemId getCartItemId() {
-		return cartItemId;
-	}
-
-	public void setCartItemId(CartItemId cartItemId) {
-		this.cartItemId = cartItemId;
-	}
-
-	@Override
-	public String toString() {
-		return "CartItems [itemId=" + itemId + ", unitprice=" + unitprice + ", quantity=" + quantity + ", totalprice="
-				+ totalprice + ", cart=" + cart + ", product=" + product + ", cartItemId=" + cartItemId + "]";
-	}
 	
 	
 }

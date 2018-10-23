@@ -1,5 +1,7 @@
 package application.jconfig.dao.impl;
 
+import java.util.List;
+
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -44,6 +46,32 @@ public class CartItemIdDaoImpl implements CartItemIdDao{
 		try {
 			sessionFactory.getCurrentSession().update(cartItemId);
 			return true;
+		} catch (Exception e) {
+			// TODO: handle exception
+			return false;
+		}
+		
+	}
+
+	@Override
+	public List<CartItemId> getAllCartItemId(int cartItemId) {
+		// TODO Auto-generated method stub
+		try {
+			return sessionFactory.getCurrentSession().createQuery("from CartItemId where cartItems_cartItemId=:id", CartItemId.class)
+					.setParameter("id", cartItemId).getResultList();
+		} catch (Exception e) {
+			// TODO: handle exception
+			return null;
+		}
+		
+	}
+
+	@Override
+	public boolean deleteAllCartItemId(int cartItemId) {
+		// TODO Auto-generated method stub
+		try {
+			sessionFactory.getCurrentSession().createQuery("delete from CartItemId where cartItems_cartItemId=:id").setParameter("id", cartItemId);
+	return true;
 		} catch (Exception e) {
 			// TODO: handle exception
 			return false;

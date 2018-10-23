@@ -1,5 +1,7 @@
 package application.jconfig.dao.impl;
 
+import java.util.List;
+
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -90,6 +92,18 @@ public class CustomerDaoImpl implements CustomerDao {
 		}
 		
 		
+	}
+
+	@Override
+	public List<Customer> getAllCustomerDetails() {
+		// TODO Auto-generated method stub
+		try {
+			Query<Customer> query = sessionFactory.getCurrentSession().createQuery("from Customer", Customer.class);
+			return query.getResultList();
+		} catch (Exception e) {
+			
+			return null;
+		}
 	}
 
 

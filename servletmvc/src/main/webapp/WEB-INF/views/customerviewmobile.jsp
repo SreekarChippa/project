@@ -5,10 +5,11 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
 <%@include file="contextpath.jsp"%>
-<spring:url value="/resources/images/" var="images"></spring:url>
+
 
 <html>
 <head>
+
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Products</title>
 
@@ -18,6 +19,19 @@
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+<style type="text/css">
+.body {
+	display: flex;
+}
+.body table {
+	margin: 50px;
+}
+.body .row {
+	padding: 20px;
+}
+</style>
+
 </head>
 <body>
 
@@ -30,30 +44,50 @@
 </nav>
 <br>
 
-	<div class="container" style="margin-top: 30px">
-		<div class="row">
+	<div class="body">
+		<div style="flex: 2">
+			<img alt="image" style="width: 250px"
+				src='<spring:url value="/resources/images/products/${mobile.productId }.jpg"></spring:url>'>
+		</div>
+		<table>
+			<tbody>
 
-			<c:forEach items="${productList}" var="product">
+				<tr>
+					<td>Brand:</td>
+					<td>${mobile.brand}</td>
+				</tr>
+				<tr>
+					<td>Model:</td>
+					<td>${mobile.model }</td>
+				</tr>
+				<tr>
+					<td>Ram:</td>
+					<td>${mobile.mobileRam}</td>
+				</tr>
+				<tr>
+					<td>Rom:</td>
+					<td>${mobile.mobileRom }</td>
+				</tr>
+				<tr>
+					<td>Processor:</td>
+					<td>${mobile.processor }</td>
+				</tr>
+				<tr>
+					<td>Price:</td>
+					<td>${mobile.price }</td>
+				</tr>
 
-				<div class="card" style="width: 15rem">
-					<img class="card-img-top"
-						src="<spring:url value="/resources/images/products/${product.productId }.jpg"></spring:url>"
-						alt="Card image cap">
-					<div class="card-body">
-						<h5 class="card-title">${product.brand }</h5>
-						<h5 class="card-title">${product.price }</h5>
-						<a
-							href="${contextPath}/customer/viewcustomerproducts/${product.productId }"><button
-								class="btn btn-success">View</button></a> <a
-							href="${contextPath}/customer/buyproducts"><button
-								class="btn btn-danger">Buy</button></a>
-					</div>
-				</div>
-			</c:forEach>
+
+			</tbody>
+		</table>
+
+		<div class="container" style="margin: 30px">
+			<div class="row">
+
+				<a href="${contextPath}/buyproducts/${mobile.productId}"><button
+						class="btn btn-danger">Add to cart</button></a>
+			</div>
 		</div>
 	</div>
-
-<%@include file="footer.jsp"%> 
-
 </body>
 </html>

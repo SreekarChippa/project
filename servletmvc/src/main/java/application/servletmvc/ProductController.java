@@ -227,5 +227,49 @@ public class ProductController {
 		return "customerproduct";
 	}
 	
+	
+	// view customerproducts
+
+		@GetMapping("customer/viewcustomerproducts/{productId}")
+		public String viewCustomerProducts(@PathVariable("productId") int productId, Model model) {
+
+			String name = subCategoryDao.getSubCategory(productDao.getSubCategoryId(productId)).getSubCategoryName();
+			System.out.println(name);
+			switch(name) {
+			case "mobile":
+				model.addAttribute("mobile", mobileDao.getMobileDetails(productId));
+				return "customerviewmobile";
+
+			case "laptop":
+				model.addAttribute("laptop", laptopDao.getLaptopDetails(productId));
+				return "customerviewlaptop";
+
+			default:
+				return "redirect:/customer/customerpage";
+			}
+		}
+		
+		
+		@GetMapping("buyproducts/{productId}")
+		public String viewAndBuyCustomerProducts(@PathVariable("productId") int productId, Model model) {
+
+			String name = subCategoryDao.getSubCategory(productDao.getSubCategoryId(productId)).getSubCategoryName();
+			System.out.println(name);
+			switch (name) {
+			case "mobile":
+				model.addAttribute("mobile", mobileDao.getMobileDetails(productId));
+				return "buymobile";
+
+			case "laptop":
+				model.addAttribute("laptop", laptopDao.getLaptopDetails(productId));
+				return "buylaptop";
+			
+
+			default:
+				return "redirect:/customer/customerpage";
+			}
+		}
+
+	
 }
 

@@ -1,7 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" isELIgnored="false"%>
-    
-    <%@ include file="contextpath.jsp" %>  
+<%@ include file="contextpath.jsp" %>  
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,21 +13,19 @@ href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 <script	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </head>
 <body>
-
+	
 <%@include file="back.jsp" %>	
 	<br>
 	
 	<div class="container">
 		<div class="jumbotron">
-			<h1>About Us</h1>
-			<br>
-			<h4>
-				<p>E-Commerce is associated with the buying and selling of products and services via computer network today. 
-					Business-to-consumer (B2C) is the retail part of e-commerce on the internet. It is when businesses sell products, 
-					services or information directly to consumers.</p>			
-			</h4>
+			<h1>Contact us</h1>
+			<h4>Hyderabad</h4>
+			<h4>Basheerbhagh</h4>
+			<h4>5000069</h4>
+			<h4>Email:contact@Ecommerce.com</h4>
 		</div>
  	</div>
-
+	
 </body>
 </html>
